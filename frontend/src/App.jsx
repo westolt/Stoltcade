@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import Header from './components/Header'
 
-const App = () => (
-  <div>
-    <p>Hello world</p>
-  </div>
-)
+
+const App = () => {
+  return (
+    <div>
+      <Header />
+    </div>
+  )
+}
 
 export default App
