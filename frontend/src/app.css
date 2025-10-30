@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(19, 75, 26);
+}
+
+.apps {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.middle {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin-right: 20rem;
+    margin-top: 8rem;
+}

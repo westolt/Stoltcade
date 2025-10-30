@@ -1,0 +1,26 @@
+.game-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px solid #472d0b;
+    border-radius: 10px;
+    background-color: rgb(134, 63, 16);
+    cursor: pointer;
+    font-family: 'Press Start 2P';
+    font-size: 10px;
+    color: white;
+}
+
+.game-button img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.game-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}

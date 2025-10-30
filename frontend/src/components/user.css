@@ -1,0 +1,46 @@
+.user_box {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(66, 31, 7);
+    border: 8px solid rgb(83, 46, 11);
+    width: 200px;
+}
+
+.name {
+    font-family: 'Press Start 2P';
+    font-size: small;
+    color: rgb(226, 215, 215);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.stat_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    margin: 10px 0;
+}
+
+.style {
+    font-family: 'Press Start 2P';
+    font-size: 10px;
+    color: rgb(226, 215, 215);
+}
+
+.stat {
+    font-family: 'Press Start 2P';
+    font-size: 10px;
+    color: rgb(226, 215, 215);
+}
+
+.picture {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}

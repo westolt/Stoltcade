@@ -1,8 +1,8 @@
-import './Header.css'
+import './header.css'
 
 const Header = () => {
     return (
-    <div class='header'>
+    <div className='header'>
       <a>Stoltcade</a>
     </div>
   )
