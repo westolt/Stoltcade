@@ -1,33 +1,52 @@
+require('dotenv').config()
+const { Sequelize, Model, DataTypes } = require('sequelize')
 const express = require('express')
 const app = express()
 
-let notes = [
-  {
-    id: "1",
-    content: "HTML is easy",
-    important: true
-  },
-  {
-    id: "2",
-    content: "Browser can execute only JavaScript",
-    important: false
-  },
-  {
-    id: "3",
-    content: "GET and POST are the most important methods of HTTP protocol",
-    important: true
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
   }
-]
-
-app.get('/', (request, response) => {
-    response.send('<p>Hello World!</p>')
 })
 
-app.get('/api/notes', (request, response) => {
-    response.json(notes)
+class Game extends Model {}
+
+Game.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: false
+  },
+  url: {
+    type: DataTypes.TEXT
+  },
+  thumbnail: {
+    type: DataTypes.TEXT
+  }
+}, {
+  sequelize,
+  underscored: true,
+  timestamps: false,
+    modelName: 'game'
 })
 
-const PORT = 3001
+app.get('/api/games', async (req, res) => {
+  const games = await Game.findAll()
+  res.json(games)
+})
+
+const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })
