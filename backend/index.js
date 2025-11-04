@@ -12,6 +12,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   }
 })
 
+app.use(express.json())
 class Game extends Model {}
 
 Game.init({
@@ -44,6 +45,33 @@ Game.init({
 app.get('/api/games', async (req, res) => {
   const games = await Game.findAll()
   res.json(games)
+})
+
+app.get('/api/games/:id', async (req, res) => {
+  const game = await Game.findByPk(req.params.id)
+  if (game) {
+    res.json(game)
+  } else {
+    res.status(404).end()
+  }
+})
+
+app.post('/api/games', async (req, res) => {
+  console.log(req.body)
+  const game = await Game.create(req.body)
+  res.json(game)
+})
+
+app.delete('/api/games/:id', async (req, res) => {
+  const game = await Game.findByPk(req.params.id)
+  if (game) {
+    console.log(`Deleting game ${game}...`)
+    await game.destroy()
+    res.status(204).end()
+  } else {
+    console.log('Game not found')
+    res.status(404).end()
+  }
 })
 
 const PORT = process.env.PORT || 3000

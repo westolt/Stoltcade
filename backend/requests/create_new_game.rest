@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/games/
+Content-Type: application/json
+
+{
+    "name": "Test",
+    "description": "This is a test",
+    "url": "",
+    "thumbnail": ""
+}
