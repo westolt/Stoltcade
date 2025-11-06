@@ -13,6 +13,8 @@ app.use(express.json())
 
 app.use('/api/games', gamesRouter)
 
+app.use(express.static('dist'))
+
 const start = async () => {
     await connectToDatabase()
     app.listen(PORT, () => {
