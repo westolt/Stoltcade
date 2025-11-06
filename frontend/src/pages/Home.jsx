@@ -1,10 +1,15 @@
-const Home() {
+import User from '../components/User'
+import GameList from '../components/GameList'
+
+const Home = ({ games }) => {
+    return (
     <div className='middle'>
         <User />
         <div className='list'>
-          <GameList />
+            <GameList games={games} />
         </div>
-      </div>
+    </div>
+    )
 }
 
 export default Home
