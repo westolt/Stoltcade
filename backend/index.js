@@ -1,10 +1,13 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 const { PORT } = require('./util/config')
 const { connectToDatabase } = require('./util/db')
 
 const gamesRouter = require('./controllers/games')
+
+app.use(cors())
 
 app.use(express.json())
 

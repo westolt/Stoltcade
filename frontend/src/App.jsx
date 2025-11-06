@@ -1,20 +1,28 @@
+import { useState, useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Routes, Route,
 } from 'react-router-dom'
+import gameService from './services/games'
 import Header from './components/Header'
 import TextBox from './components/TextBox'
 import Home from './pages/Home'
 import Play from './pages/Play'
 import './app.css'
-import game1 from './assets/game1.png'
-import game2 from './assets/game2.png'
 
 const App = () => {
-  const games = [
-    { id: 1, name: 'Math Game', description: 'Do the math!', thumbnail: game1 },
-    { id: 2, name: 'Rock, Paper, Scissors!', description: 'You already know how to play this game!', thumbnail: game2 }
-  ]
+  const [games, setGames] = useState([])
+
+  useEffect(() => {
+    console.log('Effect')
+    gameService
+      .getAll()
+      .then(initalGames => {
+        console.log('promise fulfilled')
+        setGames(initalGames)
+      })
+  }, [])
+  console.log('render', games.length, 'games')
 
   return (
       <Router>
