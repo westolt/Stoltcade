@@ -1,18 +1,25 @@
-import GameButton from './GameButton';
-import game1 from '../assets/game1.png';
-import game2 from '../assets/game2.png';
+import { useNavigate } from 'react-router-dom'
+import GameButton from './GameButton'
 
-const GameList = () => {
-    const handleClick = (gameName) => {
-        alert(`Starting game: ${gameName}`);
+const GameList = ({ games }) => {
+    const navigate = useNavigate()
+
+    const handleClick = (id) => {
+        console.log('Clicked!!!!')
+        navigate(`/games/${id}`)
     }
 
     return (
         <div className="game-list">
-            <GameButton name="Game 1" image={game1} onClick={() => handleClick("Game 1")} />
-            <GameButton name="Game 2" image={game2} onClick={() => handleClick("Game 2")} />
+            {games.map(game => 
+                <GameButton
+                    key={game.id}
+                    name={game.name}
+                    image={game.thumbnail}
+                    onClick={() => handleClick(game.id)} />
+            )}
         </div>
     )
 }
 
-export default GameList;
+export default GameList
