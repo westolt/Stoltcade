@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 const app = express()
 
 const { PORT } = require('./util/config')
@@ -14,6 +15,8 @@ app.use(express.json())
 app.use('/api/games', gamesRouter)
 
 app.use(express.static('dist'))
+
+app.use('/games', express.static(path.join(__dirname, 'games')))
 
 const start = async () => {
     await connectToDatabase()
