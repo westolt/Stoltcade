@@ -9,7 +9,7 @@
 | 6.11  | 2        | Add React Router for Play page navigation                                                                                     |
 |       | 1        | Add game service to frontend using Axios and conndect fronten and bacend eith cors                                            |
 |       | 2        | Deploy fullstack app to Fly.io                                                                                                |
-| 10.11 | 2        | Learn how to add and run game on Stoltcade                                                                                    |
-|       | 1        | Add app.use('/games', express.static(path.join(__dirname, 'games'))) to serve game files from backend to frontend             |
-|       | 1        | Edit Play page on frontend to display the game                                                                         |
-| total | 18       |                                                                                                                               |
+| 10.11 | 5        | Learn how to add and run game on Stoltcade, including figuring out why it didn't display initially                            |
+|       | 1        | Add app.use('/games', express.static(path.join(__dirname, 'games'))) to serve game files                                      |
+|       | 1        | Edit Play page on frontend to display the game                                                                                |
+| total | 25       |                                                                                                                               |
