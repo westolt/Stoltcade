@@ -15,8 +15,8 @@ const Play = ({ games }) => {
             <iframe
             src={game.url}
             title={game.name}
-            width='800'
-            height='600'
+            width='1000'
+            height='800'
             style={{ border: 0}}
             />
             <b>{game.description}</b>
