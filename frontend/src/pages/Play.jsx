@@ -19,7 +19,7 @@ const Play = ({ games }) => {
             height='800'
             style={{ border: 0}}
             />
-            <b>{game.description}</b>
+            <h2>{game.description}</h2>
         </div>
     )
 }

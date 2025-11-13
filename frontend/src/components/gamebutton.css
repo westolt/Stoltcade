@@ -1,5 +1,7 @@
 .game-button {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 0.5rem;
     padding: 1rem;
@@ -16,11 +18,4 @@
     width: 80px;
     height: 80px;
     object-fit: cover;
-}
-
-.game-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
 }

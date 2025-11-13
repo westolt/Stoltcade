@@ -1,26 +1,59 @@
 body {
     background-color: rgb(19, 75, 26);
-}
-
-.apps {
-    display: flex;
-    flex-direction: column;
     min-height: 100vh;
-    gap: 2rem;
-    padding: 1rem;
 }
 
-.middle {
+.header {
+    height: 100px;
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    align-items: flex-start;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 80pt;
+    font-weight: 1000;
+    padding: 1rem;
+    background: linear-gradient(to bottom, yellow, orange, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.container {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: row;
+}
+
+.userbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-area {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .list {
     display: flex;
-    justify-content: center;
-    flex: 1;
-    margin-right: 20rem;
-    margin-top: 8rem;
+    padding-top: 100px;
+    padding-bottom: 120px;
+}
+
+.textbox {
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .header {
+        font-size: 40pt;
+    }
+
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 }

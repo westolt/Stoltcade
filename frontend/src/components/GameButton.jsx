@@ -1,4 +1,4 @@
-import './gamebutton.css';
+import './gamebutton.css'
 
 const GameButton = ({ name, image, onClick}) => {
   return (

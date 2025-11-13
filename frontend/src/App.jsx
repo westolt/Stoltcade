@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom'
 import gameService from './services/games'
 import Header from './components/Header'
-import TextBox from './components/TextBox'
 import Home from './pages/Home'
 import Play from './pages/Play'
 import './app.css'
@@ -26,14 +25,11 @@ const App = () => {
 
   return (
       <Router>
-        <div className='apps'>
-          <Header />
+        <Header />
           <Routes>
             <Route path='/' element={<Home games={games} />} />
             <Route path='/games/:id' element={<Play games={games} />} />
           </Routes>
-          <TextBox />
-        </div>
       </Router>
   )
 }
