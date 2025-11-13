@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import GameButton from './GameButton'
+import './gamelist.css'
 
 const GameList = ({ games }) => {
     const navigate = useNavigate()
