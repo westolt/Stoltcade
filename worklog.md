@@ -10,8 +10,9 @@
 |       | 1        | Add game service to frontend using Axios and conndect fronten and bacend with cors                                            |
 |       | 2        | Deploy fullstack app to Fly.io                                                                                                |
 | 10.11 | 5        | Learn how to add and run game on Stoltcade, including figuring out why it didn't display initially                            |
-|       | 1        | Add app.use('/games', express.static(path.join(__dirname, 'games'))) to serve game files                                      |
+|       | 1        | Add `app.use('/games', express.static(path.join(__dirname, 'games')))` to serve game files                                      |
 |       | 1        | Edit Play page on frontend to display the game                                                                                |
 | 13.11 | 1        | Improve frontend development environment (add proxy rule). Investigate issue with games not loading after refresh             |
 |       | 3        | Study css (Flexbox) from youtube. Refactor css files. Fix layout when using application on mobile                             |
-| total | 29       |                                                                                                                               |
+| 17.11 | 3        | Study how to change text when hovering over a button. Credit to Bitfumes for the tutorial: https://www.youtube.com/watch?v=GSHBhIqylxM. (not copied, but helpful). Implement hover-based game description in TextBox |
+| total | 32       |                                                                                                                               |

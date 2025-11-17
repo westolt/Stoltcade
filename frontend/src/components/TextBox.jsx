@@ -1,9 +1,10 @@
 import './textbox.css'
 
-const Textbox = () => {
+const Textbox = ({ message }) => {
+
     return(
         <div className='box'>
-            <p className='text'>Hello, welcome to Stoltcade!</p>
+            <p className='text'>{ message }</p>
         </div>
     )
 }
