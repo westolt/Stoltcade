@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import './play.css'
 import Textbox from '../components/TextBox'
-import '../components/textbox.css'
 
 const Play = ({ games }) => {
     const id = useParams().id
@@ -10,8 +9,7 @@ const Play = ({ games }) => {
     if (!game) {
         return <h2>Game not found</h2>
     }
-    console.log('This is game url: ', game.url)
-    console.log('This is how to play: ', game.how_to_play)
+
     return (
         <div className='playbox'>
             <h2>Now playing {game.name}</h2>
@@ -19,10 +17,10 @@ const Play = ({ games }) => {
             src={game.url}
             title={game.name}
             width='1000'
-            height='800'
+            height='680'
             style={{ border: 0}}
             />
-            <div className='textbox'><Textbox message={game.how_to_play}/></div>
+            <Textbox message={game.how_to_play}/>
         </div>
     )
 }

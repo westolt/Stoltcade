@@ -16,7 +16,11 @@ app.use('/api/games', gamesRouter)
 
 app.use(express.static('dist'))
 
-app.use('/games', express.static(path.join(__dirname, 'games')))
+app.use('/static-games', express.static(path.join(__dirname, 'games')))
+
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
 
 const start = async () => {
     await connectToDatabase()

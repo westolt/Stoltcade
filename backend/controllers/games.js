@@ -3,8 +3,13 @@ const router = require('express').Router()
 const { Game } = require('../models/index')
 
 router.get('/', async (req, res) => {
-  const games = await Game.findAll()
-  res.json(games)
+  try {
+    const games = await Game.findAll()
+    res.json(games)
+  } catch (err) {
+    console.log('Games not found', err)
+    res.status(500).json({ error: 'Games not found' })
+  }
 })
 
 router.post('/', async (req, res) => {
