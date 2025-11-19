@@ -1,9 +1,11 @@
-const Header = () => {
-    return (
-    <div className='header'>
-      <a>Stoltcade</a>
-    </div>
-  )
-}
+import { Link } from 'react-router-dom';
 
-export default Header
+const Header = () => {
+  return (
+    <div className='header'>
+      <Link to='/'>Stoltcade</Link>
+    </div>
+  );
+};
+
+export default Header;
