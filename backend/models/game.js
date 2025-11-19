@@ -23,6 +23,9 @@ Game.init({
   },
   thumbnail: {
     type: DataTypes.TEXT
+  }, 
+  how_to_play: {
+    type: DataTypes.TEXT
   }
 }, {
   sequelize,
