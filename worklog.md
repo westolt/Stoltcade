@@ -17,4 +17,5 @@
 | 17.11 | 3        | Study how to change text when hovering over a button. Credit to Bitfumes for the tutorial: https://www.youtube.com/watch?v=GSHBhIqylxM. (not copied, but helpful). Implement hover-based game description in TextBox |
 | 19.11 | 1        | Make header a link to Home page, add how_to_play column to games table and TextBox to Play page                               |
 |       | 4        | Fix the issue where play page does not find the game after refreshing                                                         |
-| total | 37       |                                                                                                                               |
+| 20.11 | 2        | Write backend tests for games API and set up initial test data with beforeEach                                                |
+| total | 39       |                                                                                                                               |
