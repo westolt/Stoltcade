@@ -18,4 +18,5 @@
 | 19.11 | 1        | Make header a link to Home page, add how_to_play column to games table and TextBox to Play page                               |
 |       | 4        | Fix the issue where play page does not find the game after refreshing                                                         |
 | 20.11 | 2        | Write backend tests for games API and set up initial test data with beforeEach                                                |
-| total | 39       |                                                                                                                               |
+| 21.11 | 1        | Add frontend test for Text Box and fix CSS issues with gamebutton and gamelist                                                |
+| total | 40       |                                                                                                                               |
