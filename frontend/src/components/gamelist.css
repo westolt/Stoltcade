@@ -2,3 +2,12 @@
     display: flex;
     gap: 0.5rem;
 }
+
+@media only screen and (max-width: 600px) {
+
+    .game-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    }
+}
