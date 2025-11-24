@@ -88,13 +88,15 @@ jobs:
         run: cd backend && npm ci
 
       - name: Start backend
-        run: cd backend && npx cross-env NODE_ENV=test node index.js &
+        run: cd backend && npx cross-env NODE_ENV=test PORT=3000 node index.js &
+      - name: Wait for backend
+        run: npx wait-on http://localhost:3000 --timeout 60000
 
       - name: Start frontend
         run: cd frontend && npx vite &
 
       - name: Wait for app to be ready
-        run: npx wait-on http://localhost:5173
+        run: npx wait-on http://localhost:5173 --timeout 60000
 
       - name: Run Playwright tests
         run: cd e2e && npm test
