@@ -19,4 +19,6 @@
 |       | 4        | Fix the issue where play page does not find the game after refreshing                                                         |
 | 20.11 | 2        | Write backend tests for games API and set up initial test data with beforeEach                                                |
 | 21.11 | 1        | Add frontend test for Text Box and fix CSS issues with gamebutton and gamelist                                                |
-| total | 40       |                                                                                                                               |
+| 24.11 | 3        | Add e2e test folder, write tests for front page, game hover description, game opening and navigating from header              |
+|       | 2        | Update Github actions CI workflow to include frontend, backend, and e2e tests. Add badges to README                           |
+| total | 45       |                                                                                                                               |
