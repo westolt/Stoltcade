@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import TextBox from './TextBox'
-import { test, expect} from 'vitest'
+import { test, expect } from 'vitest'
 
-test('renders content', () => {
+test('renders default text', () => {
   const text =  'Welcome to Stoltcade!'
 
   render(<TextBox message={text} />)
