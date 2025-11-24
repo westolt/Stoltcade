@@ -1,3 +1,5 @@
+[![CI](https://github.com/westolt/Stoltcade/actions/workflows/main.yml/badge.svg)](https://github.com/westolt/Stoltcade/actions/workflows/main.yml)
+
 # 🎮 Stoltcade
 
 **Stoltcade** is a full-stack web-based arcade platform.  
