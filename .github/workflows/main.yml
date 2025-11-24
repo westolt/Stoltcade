@@ -51,7 +51,7 @@ jobs:
         run: cd backend && npm ci
 
       - name: Run backend tests (Node + Supertest)
-        run: cd backend && npm run test -- --coverage
+        run: cd backend && npm run test
 
       - name: Upload backend coverage to Codecov
         uses: codecov/codecov-action@v5
