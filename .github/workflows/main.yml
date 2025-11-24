@@ -81,12 +81,18 @@ jobs:
       - name: Install Playwright browsers
         run: cd e2e && npx playwright install --with-deps
 
+      - name: Install frontend dependencies
+        run: cd frontend && npm ci
+
+      - name: Install backend dependencies
+        run: cd backend && npm ci
+
       - name: Start backend
-        run: cd backend && npm start &
-      
+        run: cd backend && npx cross-env NODE_ENV=test node index.js &
+
       - name: Start frontend
-        run: cd frontend && npm run dev &
-      
+        run: cd frontend && npx vite &
+
       - name: Wait for app to be ready
         run: npx wait-on http://localhost:5173
 
