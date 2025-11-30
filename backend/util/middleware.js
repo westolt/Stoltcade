@@ -25,6 +25,8 @@ const errorHandler = (error, request, response, next) => {
     return response.status(400).json({ error: 'malformatted id' })
   } else if (error.name === 'SequelizeValidationError') {
     return response.status(400).json({ error: error.errors[0].message })
+  } else if (error.name === 'SequelizeUniqueConstraintError') {
+    return response.status(400).json({ error: 'Username must be unique' })
   }
 
   next(error)

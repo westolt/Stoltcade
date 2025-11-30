@@ -21,4 +21,5 @@
 | 21.11 | 1        | Add frontend test for Text Box and fix CSS issues with gamebutton and gamelist                                                |
 | 24.11 | 3        | Add e2e test folder, write tests for front page, game hover description, game opening and navigating from header              |
 |       | 2        | Update Github actions CI workflow to include frontend, backend, and e2e tests. Add badges to README                           |
-| total | 45       |                                                                                                                               |
+| 30.11 | 2        | Add user model, users controller, middleware and logger                                                                       |
+| total | 47       |                                                                                                                               |
