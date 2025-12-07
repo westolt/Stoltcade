@@ -20,7 +20,7 @@ const Play = ({ games }) => {
             height='680'
             style={{ border: 0}}
             />
-            <Textbox message={game.how_to_play}/>
+            <Textbox message={game.howToPlay}/>
         </div>
     )
 }
