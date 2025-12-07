@@ -1,31 +1,25 @@
+import { useState } from 'react'
+import LoginFrom from './LoginForm'
 import './user.css'
 import guest from '../assets/guest.png'
 
 const User = () => {
-    return (
+    const [user, setUser] = useState(null)
+
+    if (!user) {
+        return (
         <div className="user_box">
             <img className="picture" src={guest} alt="Guest image"></img>
             <p className='name'>Guest</p>
-            <div className="stat_row">
-                <span className='style'>Level:</span>
-                <span className='stat'>?</span>
-            </div>
-
-            <div className="stat_row">
-                <span className='style'>IQ:</span>
-                <span className='stat'>?</span>
-            </div>
-
-            <div className="stat_row">
-                <span className='style'>Skill:</span>
-                <span className='stat'>?</span>
-            </div>
-
-            <div className="stat_row">
-                <span className='style'>Luck:</span>
-                <span className='stat'>?</span>
-            </div>
-                </div>
+            <LoginFrom setUser={setUser}/>
+        </div>
+    )
+    }
+    return (
+        <div className="user_box">
+            <img className="picture" src={guest} alt="Guest image"></img>
+            <p className='name'>{ user.username }</p>
+        </div>
     )
 }
 
