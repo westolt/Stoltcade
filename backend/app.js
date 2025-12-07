@@ -5,6 +5,7 @@ const path = require('path')
 
 const gamesRouter = require('./controllers/games')
 const userRouter = require('./controllers/users')
+const loginRouter = require('./controllers/login')
 
 const app = express()
 
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.use('/api/games', gamesRouter)
 app.use('/api/users', userRouter)
+app.use('/api/login', loginRouter)
 
 app.use(middleware.errorHandler)
 
