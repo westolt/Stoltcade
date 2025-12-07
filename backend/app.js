@@ -13,14 +13,14 @@ app.use(cors())
 
 app.use(express.json())
 
-app.use('/api/games', gamesRouter)
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
-
-app.use(middleware.errorHandler)
+app.use('/api/games', gamesRouter)
 
 app.use(express.static('dist'))
 
 app.use('/static-games', express.static(path.join(__dirname, 'games')))
+
+app.use(middleware.errorHandler)
 
 module.exports = app

@@ -22,7 +22,7 @@ const GameList = ({ games, hoverChange }) => {
                     onClick={() => handleClick(game.id)}
                     onMouseEnter={()=>hoverChange(game.id)}
                     onMouseLeave={()=>hoverChange(null)}
-                     />
+                        />
             )}
             </div>
         </div>

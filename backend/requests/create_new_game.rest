@@ -2,8 +2,9 @@ POST http://localhost:3000/api/games/
 Content-Type: application/json
 
 {
-    "name": "Test",
-    "description": "This is a test",
-    "url": "",
-    "thumbnail": ""
+    "name": "PeriodicPairs",
+    "description": "A quiz game about the periodic table.",
+    "url": "/static-games/PeriodicPairs/index.html",
+    "thumbnail": "/static-games/PeriodicPairs/game1.png",
+    "howToPlay": "Type the full name of the chemical element that matches the symbol shown on the screen and click Submit."
 }

@@ -24,14 +24,14 @@ Game.init({
   thumbnail: {
     type: DataTypes.TEXT
   }, 
-  how_to_play: {
+  howToPlay: {
     type: DataTypes.TEXT
   }
 }, {
   sequelize,
   underscored: true,
-  timestamps: false,
-    modelName: 'game'
+  timestamps: true,
+  modelName: 'game'
 })
 
 module.exports = Game

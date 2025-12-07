@@ -12,6 +12,11 @@ const LoginFrom = ({ setUser }) => {
             
             try {
                 const user= await loginService.login({ username, password })
+
+                window.localStorage.setItem(
+                    'loggedUser', JSON.stringify(user)
+                ) 
+
                 setUser(user)
                 setUsername('')
                 setPassword('')
