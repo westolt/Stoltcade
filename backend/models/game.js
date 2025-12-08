@@ -24,7 +24,7 @@ Game.init({
   thumbnail: {
     type: DataTypes.TEXT
   }, 
-  howToPlay: {
+  how_to_play: {
     type: DataTypes.TEXT
   }
 }, {

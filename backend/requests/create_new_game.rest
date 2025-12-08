@@ -6,5 +6,5 @@ Content-Type: application/json
     "description": "A quiz game about the periodic table.",
     "url": "/static-games/PeriodicPairs/index.html",
     "thumbnail": "/static-games/PeriodicPairs/game1.png",
-    "howToPlay": "Type the full name of the chemical element that matches the symbol shown on the screen and click Submit."
+    "how_to_play": "Type the full name of the chemical element that matches the symbol shown on the screen and click Submit."
 }
