@@ -38,7 +38,7 @@ const Register = ({ setUser }) => {
                 setUsername('')
                 setPassword('')
             } catch (error) {
-                console.log('Error during registeration: ', error)
+                console.log('Error during registration: ', error)
                 showMessage('Username already taken!')
             }
         }

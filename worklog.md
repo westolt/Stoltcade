@@ -22,4 +22,7 @@
 | 24.11 | 3        | Add e2e test folder, write tests for front page, game hover description, game opening and navigating from header              |
 |       | 2        | Update Github actions CI workflow to include frontend, backend, and e2e tests. Add badges to README                           |
 | 30.11 | 2        | Add user model, users controller, middleware and logger                                                                       |
-| total | 47       |                                                                                                                               |
+| 7.12  | 2        | Add user registration functionality (frontend + backend) and add migrations for users, games and scores                       |
+|       | 2        | Solve why user creation gave "malformatted id" errors in backend. This took more time that I'd like to admit, but I realised the issue was caused by using camelCase in migrations instead of snake_case. Fixed by changeing passwordHash to password_hash in the migration                             |
+|       | 2        | Implement login form and login logic                                                                                          |
+| total | 53       |                                                                                                                               |
