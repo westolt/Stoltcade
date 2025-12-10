@@ -49,7 +49,11 @@ const Register = ({ setUser }) => {
             <Message message={message}/>
             <form onSubmit={handleRegister}>
                 <div>
-                <label>
+                <label style={{
+                fontSize: '12px',
+                color: 'white',
+                fontFamily: '"Press Start 2P", cursive'
+                }}>
                     Give username
                     <input
                     type='text'
@@ -59,7 +63,11 @@ const Register = ({ setUser }) => {
                 </label>
                 </div>
                 <div>
-                <label>
+                <label style={{
+                fontSize: '12px',
+                color: 'white',
+                fontFamily: '"Press Start 2P", cursive'
+                }}>
                     Give password
                     <input
                     type='password'
@@ -69,7 +77,11 @@ const Register = ({ setUser }) => {
                 </label>
                 </div>
                 <div>
-                <label>
+                <label style={{
+                fontSize: '12px',
+                color: 'white',
+                fontFamily: '"Press Start 2P", cursive'
+                }}>
                     Give password again
                     <input
                     type='password'

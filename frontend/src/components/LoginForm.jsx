@@ -33,8 +33,12 @@ const LoginFrom = ({ setUser }) => {
             <Message message={message}/>
             <form onSubmit={handleLogin}>
                 <div>
-                <label>
-                    username
+                <label style={{
+                fontSize: '12px',
+                color: 'white',
+                fontFamily: '"Press Start 2P", cursive'
+                }}>
+                    Username
                     <input
                     type="text"
                     value={username}
@@ -43,8 +47,12 @@ const LoginFrom = ({ setUser }) => {
                 </label>
                 </div>
                 <div>
-                <label>
-                    password
+                <label style={{
+                fontSize: '12px',
+                color: 'white',
+                fontFamily: '"Press Start 2P", cursive'
+                }}>
+                    Password
                     <input
                     type="password"
                     value={password}

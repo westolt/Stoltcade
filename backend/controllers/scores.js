@@ -1,15 +1,38 @@
 
 const router = require('express').Router()
 const { tokenExtractor } = require('../util/middleware')
-const { Score } = require('../models/index')
+const { Score, User, Game } = require('../models/index')
+const { Op } = require('sequelize')
 
 router.get('/', async (req, res) => {
-    const scores = await Score.findAll()
+    const scores = await Score.findAll({
+        include: [
+        { 
+            model: User,
+            attributes: ['username'],
+        },
+        {
+            model: Game,
+            attributes: ['name']
+        }
+    ]
+    })
     res.json(scores)
 })
 
 router.get('/:id', async (req, res) => {
-    const score = await Score.findByPk(req.params.id)
+    const score = await Score.findByPk(req.params.id, {
+        include: [
+        { 
+            model: User,
+            attributes: ['username'],
+        },
+        {
+            model: Game,
+            attributes: ['name']
+        }
+        ],
+    })
     if (score) {
         res.json(score)
     } else {
