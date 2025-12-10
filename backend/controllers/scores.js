@@ -1,8 +1,6 @@
 
 const router = require('express').Router()
-const jwt = require('jsonwebtoken');
-const { SECRET } = require('../util/config')
-const { tokenExtractor, userExtractor } = require('../util/middleware')
+const { tokenExtractor } = require('../util/middleware')
 const { Score } = require('../models/index')
 
 router.get('/', async (req, res) => {
@@ -38,11 +36,6 @@ router.post('/', tokenExtractor, async (req, res) => {
     const current_score = await Score.findOne({
         where: { user_id, game_id }
     })
-    console.log("decoded:", decoded)
-    console.log("user_id:", user_id)
-    console.log("gameId:", gameId, typeof gameId)
-    console.log('score: ', score)
-    console.log('curretn_score: ', current_score)
 
     if (current_score) {
         if (current_score.score >= score) {

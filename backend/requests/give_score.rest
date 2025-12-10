@@ -3,6 +3,6 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZlbmxhIiwiaWQiOjIsImlhdCI6MTc2NTM2MDY2MX0.n4JD2BsitHj7i2fyTrUrLwR5J25JrsBFBWjvwExLf5k
 
 {
-    "score": 16,
-    "gameId": 2
+    "score": 9,
+    "gameId": 9
 }

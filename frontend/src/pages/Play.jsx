@@ -14,7 +14,7 @@ const Play = ({ games }) => {
         <div className='playbox'>
             <h2>Now playing {game.name}</h2>
             <iframe
-            src={game.url}
+            src={`${game.url}?id=${game.id}`}
             title={game.name}
             width='1000'
             height='680'
