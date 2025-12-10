@@ -2,11 +2,11 @@ const Game = require('./game')
 const User = require('./user')
 const Score = require('./score')
 
-User.hasMany(Score)
-Score.belongsTo(User)
+User.hasMany(Score, { foreignKey: 'user_id' })
+Score.belongsTo(User, { foreignKey: 'user_id' })
 
-Game.hasMany(Score)
-Score.belongsTo(Game)
+Game.hasMany(Score, { foreignKey: 'game_id' })
+Score.belongsTo(Game, { foreignKey: 'game_id' })
 
 module.exports = {
     Game, User, Score
