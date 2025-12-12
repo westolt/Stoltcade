@@ -29,4 +29,5 @@
 |       | 3        | Save high score to the score table after finishing a game                                                                     |
 |       | 2        | Add high score list to user box                                                                                               |
 | 12.12 | 1        | Investigate why logging in is not possible in the production version. Solution: I had not set the SECRET variable in Fly.io   |
-| total | 63       |                                                                                                                               |
+|       | 1        | Add profile_picture column to User model via migration                                                                        |
+| total | 64       |                                                                                                                               |
