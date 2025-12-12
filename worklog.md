@@ -25,4 +25,7 @@
 | 7.12  | 2        | Add user registration functionality (frontend + backend) and add migrations for users, games and scores                       |
 |       | 2        | Solve why user creation gave "malformatted id" errors in backend. This took more time that I'd like to admit, but I realised the issue was caused by using camelCase in migrations instead of snake_case. Fixed by changeing passwordHash to password_hash in the migration                             |
 |       | 2        | Implement login form and login logic                                                                                          |
-| total | 53       |                                                                                                                               |
+| 10.12 | 4        | Add scores.js controller to submit and update user scores                                                                     |
+|       | 3        | Save high score to the score table after finishing a game                                                                     |
+|       | 2        | Add high score list to user box                                                                                               |
+| total | 62       |                                                                                                                               |
