@@ -18,6 +18,10 @@ User.init({
   passwordHash: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  profilePicture: {
+    type: DataTypes.TEXT,
+    allowNull: true
   }
 }, {
   sequelize,
