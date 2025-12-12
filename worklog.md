@@ -10,7 +10,7 @@
 |       | 1        | Add game service to frontend using Axios and conndect fronten and bacend with cors                                            |
 |       | 2        | Deploy fullstack app to Fly.io                                                                                                |
 | 10.11 | 5        | Learn how to add and run game on Stoltcade, including figuring out why it didn't display initially                            |
-|       | 1        | Add `app.use('/games', express.static(path.join(__dirname, 'games')))` to serve game files                                    |
+|       | 1        | Add `app.use('/static-games', express.static('games'))` to serve game files. So basically the same technique as serving the frontend's static files, but with a different path  |
 |       | 1        | Edit Play page on frontend to display the game                                                                                |
 | 13.11 | 1        | Improve frontend development environment (add proxy rule). Investigate issue with games not loading after refresh             |
 |       | 3        | Study css (Flexbox) from youtube. Refactor css files. Fix layout when using application on mobile                             |
@@ -28,4 +28,5 @@
 | 10.12 | 4        | Add scores.js controller to submit and update user scores                                                                     |
 |       | 3        | Save high score to the score table after finishing a game                                                                     |
 |       | 2        | Add high score list to user box                                                                                               |
-| total | 62       |                                                                                                                               |
+| 12.12 | 1        | Investigate why logging in is not possible in the production version. Solution: I had not set the SECRET variable in Fly.io   |
+| total | 63       |                                                                                                                               |
