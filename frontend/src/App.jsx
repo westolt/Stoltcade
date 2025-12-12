@@ -13,15 +13,12 @@ const App = () => {
   const [games, setGames] = useState([])
 
   useEffect(() => {
-    console.log('Effect')
     gameService
       .getAll()
       .then(initalGames => {
-        console.log('promise fulfilled')
         setGames(initalGames)
       })
   }, [])
-  console.log('render', games.length, 'games')
 
   return (
       <Router>

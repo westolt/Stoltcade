@@ -2,7 +2,6 @@
 const router = require('express').Router()
 const { tokenExtractor } = require('../util/middleware')
 const { Score, User, Game } = require('../models/index')
-const { Op } = require('sequelize')
 
 router.get('/', async (req, res) => {
     const scores = await Score.findAll({
