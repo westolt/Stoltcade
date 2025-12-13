@@ -30,7 +30,7 @@
 |       | 2        | Add high score list to user box                                                                                               |
 | 12.12 | 1        | Investigate why logging in is not possible in the production version. Solution: I had not set the SECRET variable in Fly.io   |
 |       | 1        | Add profile_picture column to User model via migration                                                                        |
-| 13.12 | 1        | Study how to upload profile picture (and how to delete old image files when uploading a new one) for users on Node, Sequelize and React. Used these videos: [link1](https://www.youtube.com/watch?v=sVYrH166LXM) and [link2](https://www.youtube.com/watch?v=kcQWzRX37ag)|
+| 13.12 | 1        | Study how to upload profile pictures (and how to delete old image files when uploading a new one) for users on Node, Sequelize and React. Used these videos: [link1](https://www.youtube.com/watch?v=sVYrH166LXM) and [link2](https://www.youtube.com/watch?v=kcQWzRX37ag)|
 |       | 2        | Add controller and PUT route for uploading profile pictures. Test with Postman to confirm uploads work                       |
 |       | 2        | Investigate why new profile pictures are not showing in the application. Still have no idea, but will continue troubleshooting tomorrow |
 | total | 69       |                                                                                                                               |
