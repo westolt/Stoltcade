@@ -19,6 +19,8 @@ app.use(express.static('dist'))
 
 app.use('/static-games', express.static('games'))
 
+app.use('/profile_pictures', express.static('profile_pictures'))
+
 app.use(middleware.errorHandler)
 
 module.exports = app

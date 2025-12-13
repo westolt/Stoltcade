@@ -1,0 +1,10 @@
+PUT http://localhost:3000/api/users/1/image
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IndpbGwiLCJpZCI6MSwiaWF0IjoxNzY1NjUyNTkyfQ.5omRqz-f0yr1LngYm0hoHLN3cC7jSD6fSZ4vDEujUDk
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="image"; filename="bulba.jpg"
+Content-Type: image/jpeg
+
+< /Users/yourname/Desktop/bulba.jpg
+--boundary--

@@ -37,12 +37,12 @@ const User = () => {
         setScores([])
         window.localStorage.removeItem('loggedUser')
     }
-    console.log('Tämä on profiilikuva: ', user ? user.profilePicture : 'Ei käyttäjää')
+    console.log('Tämä on profiilikuva: ', user ? user.image : 'Ei käyttäjää')
 
     return (
     <div className="user_box">
         <>
-        <img className="picture" src={user ? (user.profilePicture || guest) : guest} alt="Profile picture" />
+        <img className="picture" src={user ? (user.image || guest) : guest} alt="Profile picture" />
         </>
         {user ? (
             <>

@@ -19,8 +19,8 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false
   },
-  profilePicture: {
-    type: DataTypes.TEXT,
+  image: {
+    type: DataTypes.STRING,
     allowNull: true
   }
 }, {

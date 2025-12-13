@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 
   res
     .status(200)
-    .send({ token, username: user.username, name: user.name, profilePicture: user.profile_picture })
+    .send({ token, username: user.username, name: user.name, image: user.image })
     console.log('Logged in!')
 })
 
