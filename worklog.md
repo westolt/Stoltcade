@@ -14,7 +14,7 @@
 |       | 1        | Edit Play page on frontend to display the game                                                                                |
 | 13.11 | 1        | Improve frontend development environment (add proxy rule). Investigate issue with games not loading after refresh             |
 |       | 3        | Study css (Flexbox) from youtube. Refactor css files. Fix layout when using application on mobile                             |
-| 17.11 | 3        | Study how to change text when hovering over a button. Credit to Bitfumes for the tutorial: https://www.youtube.com/watch?v=GSHBhIqylxM. (not copied, but helpful). Implement hover-based game description in TextBox |
+| 17.11 | 3        | Study how to change text when hovering over a button. Credit to Bitfumes for the tutorial: [link](https://www.youtube.com/watch?v=GSHBhIqylxM). (not copied, but helpful). Implement hover-based game description in TextBox |
 | 19.11 | 1        | Make header a link to Home page, add how_to_play column to games table and TextBox to Play page                               |
 |       | 4        | Fix the issue where play page does not find the game after refreshing                                                         |
 | 20.11 | 2        | Write backend tests for games API and set up initial test data with beforeEach                                                |
@@ -30,4 +30,7 @@
 |       | 2        | Add high score list to user box                                                                                               |
 | 12.12 | 1        | Investigate why logging in is not possible in the production version. Solution: I had not set the SECRET variable in Fly.io   |
 |       | 1        | Add profile_picture column to User model via migration                                                                        |
-| total | 64       |                                                                                                                               |
+| 13.12 | 1        | Study how to upload profile picture (and how to delete old image files when uploading a new one) for users on Node, Sequelize and React. Used these videos: [link1](https://www.youtube.com/watch?v=sVYrH166LXM) and [link2](https://www.youtube.com/watch?v=kcQWzRX37ag)|
+|       | 2        | Add controller and PUT route for uploading profile pictures. Test with Postman to confirm uploads work                       |
+|       | 2        | Investigate why new profile pictures are not showing in the application. Still have no idea, but will continue troubleshooting tomorrow |
+| total | 69       |                                                                                                                               |
