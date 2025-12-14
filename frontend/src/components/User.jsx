@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react'
+import userService from '../services/users'
+import scoreService from '../services/scores'
 import LoginFrom from './LoginForm'
 import Register from './Register'
-import scoreService from '../services/scores'
-import './user.css'
 import guest from '../assets/guest.png'
+import ImageButton from './ImageButton'
+import './user.css'
 
 const User = () => {
     const [user, setUser] = useState(null)
     const [scores, setScores] = useState([])
     const [userScores, setUserScores] = useState([])
+    const [profilePictureFile, setProfilePictureFile] = useState(null)
 
     useEffect(() => {
         const loggedUserJSON = window.localStorage.getItem('loggedUser')
         if (loggedUserJSON) {
-        const user = JSON.parse(loggedUserJSON)
-        setUser(user)
+            const user = JSON.parse(loggedUserJSON)
+            setUser(user)
+            userService.setToken(user.token)
+            console.log('TOKEN: ', user.token)
         }
     }, [])
 
@@ -35,16 +40,46 @@ const User = () => {
     const handleLogout = () => {
         setUser(null)
         setScores([])
+        setUserScores([])
+        setProfilePictureFile(null)
         window.localStorage.removeItem('loggedUser')
     }
-    console.log('Tämä on profiilikuva: ', user ? user.image : 'Ei käyttäjää')
+
+    const handleClick = async () => {
+        if (!profilePictureFile) return
+        console.log('Tämä on kuvan file frontend: ', profilePictureFile)
+
+        const formData = new FormData()
+        formData.append('image', profilePictureFile)
+
+        const updated = await userService.updateImage(formData)
+        const updatedUser = { ...user, image: updated.image }
+
+        setUser(updatedUser)
+        window.localStorage.setItem(
+            'loggedUser',
+            JSON.stringify(updatedUser)
+        )
+    }
 
     return (
     <div className="user_box">
         <>
-        <img className="picture"
-        src={user ? user.image || guest : guest}
-        alt="Profile picture" />
+        {user ? ( 
+        <>
+            <ImageButton
+                image={user?.image || guest}
+                onClick={handleClick}
+            />
+            <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setProfilePictureFile(e.target.files[0])}
+            />
+        </>
+        ):( 
+        <img className="picture" src={guest} alt="Profile picture" />
+        )}
         </>
         {user ? (
             <>

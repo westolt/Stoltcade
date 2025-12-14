@@ -34,9 +34,13 @@ const Register = ({ setUser }) => {
                     'loggedUser', JSON.stringify(user)
                 )
 
+                userService.setToken(user.token)
+                console.log('TOKEN: ', user.token)
                 setUser(user)
+
                 setUsername('')
                 setPassword('')
+                setPassword2('')
             } catch (error) {
                 console.log('Error during registration: ', error)
                 showMessage('Username already taken!')

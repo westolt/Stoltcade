@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import loginService from '../services/login'
+import userService from '../services/users'
 import Message from './Message'
 
 const LoginFrom = ({ setUser }) => {
@@ -15,8 +16,10 @@ const LoginFrom = ({ setUser }) => {
 
                 window.localStorage.setItem(
                     'loggedUser', JSON.stringify(user)
-                ) 
+                )
 
+                userService.setToken(user.token)
+                console.log('TOKEN: ', user.token)
                 setUser(user)
                 setUsername('')
                 setPassword('')

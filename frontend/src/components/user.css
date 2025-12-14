@@ -38,9 +38,31 @@
     color: rgb(226, 215, 215);
 }
 
+.image-button {
+    position: relative;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
 .picture {
     width: 100%;
-    height: auto;
     display: block;
     border-radius: 8px;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.image-button:hover .overlay {
+    opacity: 1;
 }

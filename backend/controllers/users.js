@@ -2,6 +2,8 @@ const bcrypt = require('bcrypt')
 const router = require('express').Router()
 const multer = require('multer')
 const path = require('path')
+const jwt = require('jsonwebtoken')
+const { SECRET } = require('../util/config')
 const fs = require('fs')
 const { tokenExtractor } = require('../util/middleware')
 const User = require('../models/user')
@@ -54,10 +56,21 @@ router.post('/', async (req, res) => {
         passwordHash,
     })
 
-    res.json(user)
+    const userForToken = {
+        username: user.username,
+        id: user.id
+    }
+
+    const token = jwt.sign(userForToken, SECRET)
+
+    res.status(200).json({
+    token,
+    username: user.username,
+    image: user.image
+  })
 })
 
-router.put('/:id/image', tokenExtractor, upload, async (req, res) => {
+router.put('/image', tokenExtractor, upload, async (req, res) => {
     console.log('This is the image file: ', req.file)
     const user = await User.findByPk(req.decodedToken.id)
 
@@ -66,14 +79,15 @@ router.put('/:id/image', tokenExtractor, upload, async (req, res) => {
     }
 
     if (user.image) {
-        const old_path = path.join(__dirname, '..', user.image)
-        fs.unlink(old_path, function(err){
-            if(err) {
-                console.log(err.message)
-            } else {
-                console.log('File deleted')
-            }
-        })
+        const filename = path.basename(user.image)
+        console.log('TÄMÄ ON FILENAME: ', filename)
+        const old_path = path.join(__dirname, '..', 'profile_pictures', filename)
+        console.log('Deleting: ', old_path)
+        try {
+            fs.unlinkSync(old_path)
+        } catch (err) {
+            console.log('Could not delete old file:', err.message)
+        }
     }
 
     user.image = `/profile_pictures/${req.file.filename}`
