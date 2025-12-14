@@ -33,4 +33,5 @@
 | 13.12 | 1        | Study how to upload profile pictures (and how to delete old image files when uploading a new one) for users on Node, Sequelize and React. Used these videos: [link1](https://www.youtube.com/watch?v=sVYrH166LXM) and [link2](https://www.youtube.com/watch?v=kcQWzRX37ag)|
 |       | 2        | Add controller and PUT route for uploading profile pictures. Test with Postman to confirm uploads work                       |
 |       | 2        | Investigate why new profile pictures are not showing in the application. Still have no idea, but will continue troubleshooting tomorrow |
-| total | 69       |                                                                                                                               |
+| 14.12 | 2        | Fix the issue with displaying profile pictures by adding the missing static route proxy configuration to `vite.config.js`.        |
+| total | 71       |                                                                                                                               |

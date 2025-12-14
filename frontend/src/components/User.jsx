@@ -42,7 +42,9 @@ const User = () => {
     return (
     <div className="user_box">
         <>
-        <img className="picture" src={user ? (user.image || guest) : guest} alt="Profile picture" />
+        <img className="picture"
+        src={user ? user.image || guest : guest}
+        alt="Profile picture" />
         </>
         {user ? (
             <>

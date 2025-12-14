@@ -6,7 +6,6 @@ const GameList = ({ games, hoverChange }) => {
     const navigate = useNavigate()
 
     const handleClick = (id) => {
-        console.log('Clicked!!!!')
         navigate(`/games/${id}`)
     }
 
