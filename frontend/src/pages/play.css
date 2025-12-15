@@ -1,6 +1,41 @@
 .playbox {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+
+.game-layout {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  height: auto;
+  margin-top: 2rem;
+}
+
+.scoreboard-position {
+  position: absolute;
+  left: 80%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gamescreen-position {
+  display: flex;
+  justify-content: center;
+}
+
+.scoreboard {
+  list-style: none;
+  padding: 0;
+  clear: both;
+  background-color: #3b260b;
+  padding: 3rem;
+  border-radius: 25px;
+  border: 10px solid #472d0b;
+}
+
+.scoretext {
+    font-family: 'Press Start 2P';
+    color: rgb(255, 255, 255);
+    margin: 10px;
 }

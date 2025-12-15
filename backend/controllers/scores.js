@@ -24,6 +24,8 @@ router.get('/game/:gameId', async (req, res) => {
         where: {
             game_id: req.params.gameId
         },
+        order: [['score', 'DESC']],
+        limit: 10,
         include: [
         { 
             model: User,
