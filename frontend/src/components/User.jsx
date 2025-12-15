@@ -47,7 +47,6 @@ const User = () => {
 
     const handleClick = async () => {
         if (!profilePictureFile) return
-        console.log('Tämä on kuvan file frontend: ', profilePictureFile)
 
         const formData = new FormData()
         formData.append('image', profilePictureFile)
@@ -100,7 +99,8 @@ const User = () => {
                         color: 'white',
                         fontSize: '10px',
                         fontFamily: '"Press Start 2P", cursive',
-                        marginLeft: '-30px'
+                        marginLeft: '-30px',
+                        marginBottom: '10px'
                         }}
                     key={score.id}>
                         {score.game.name}: {score.score} 

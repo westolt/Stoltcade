@@ -19,18 +19,17 @@ router.get('/', async (req, res) => {
     res.json(scores)
 })
 
-router.get('/:id', async (req, res) => {
-    const score = await Score.findByPk(req.params.id, {
+router.get('/game/:gameId', async (req, res) => {
+    const score = await Score.findAll({
+        where: {
+            game_id: req.params.gameId
+        },
         include: [
         { 
             model: User,
             attributes: ['username'],
-        },
-        {
-            model: Game,
-            attributes: ['name']
         }
-        ],
+        ]
     })
     if (score) {
         res.json(score)

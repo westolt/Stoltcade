@@ -22,4 +22,5 @@
 
 .game-button:hover {
     background: rgb(90, 43, 11);
+    transition: opacity 0.6s ease;
 }
