@@ -36,4 +36,5 @@
 | 14.12 | 2        | Fix the issue with displaying profile pictures by adding the missing static route proxy configuration to `vite.config.js`.    |
 |       | 2        | Add ImageButton component and profile picture update functionality                                                                      |
 |       | 4        | Fix token assignment on registration and correct old image deletion                                                           |
-| total | 77       |                                                                                                                               |
+| 15.12 | 2        | Add score router for gameId in backend and add top 10 scoreboard to games    |
+| total | 79       |                                                                                                                               |
