@@ -37,4 +37,5 @@
 |       | 2        | Add ImageButton component and profile picture update functionality                                                                      |
 |       | 4        | Fix token assignment on registration and correct old image deletion                                                           |
 | 15.12 | 2        | Add score router for gameId in backend and add top 10 scoreboard to games    |
+| 16.12 | 1        | Investigate how to upload profilepictures to cloud service. Add cloudinary.js util    |
 | total | 79       |                                                                                                                               |
