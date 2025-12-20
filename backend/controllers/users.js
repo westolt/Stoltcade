@@ -3,7 +3,7 @@ const router = require('express').Router()
 const multer = require('multer')
 const path = require('path')
 const jwt = require('jsonwebtoken')
-const { SECRET } = require('../util/config')
+const { SECRET, USE_CLOUDINARY } = require('../util/config')
 const fs = require('fs')
 const { tokenExtractor } = require('../util/middleware')
 const User = require('../models/user')
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({
-    storage: storage,
+    storage: USE_CLOUDINARY ? multer.memoryStorage() : storage,
     limits: { fileSize: '1000000'},
     fileFilter: (req, file, cb) => {
         const fileTypes = /jpeg|jpg|png/
@@ -78,19 +78,32 @@ router.put('/image', tokenExtractor, upload, async (req, res) => {
         return res.status(400).json({ error: 'User not found'})
     }
 
-    if (user.image) {
-        const filename = path.basename(user.image)
-        console.log('TÄMÄ ON FILENAME: ', filename)
-        const old_path = path.join(__dirname, '..', 'profile_pictures', filename)
-        console.log('Deleting: ', old_path)
-        try {
-            fs.unlinkSync(old_path)
-        } catch (err) {
-            console.log('Could not delete old file:', err.message)
+    if (USE_CLOUDINARY) {
+        if(user.image) {
+            const publicId = user.image.split('/').pop().split('.')[0]
+            await cloudinary.uploader.destroy(`profile_pictures/${publicId}`)
         }
-    }
+
+        const uploadResult = await cloudinary.upload(
+            `profile_pictures/${publicId}`,{
+                
+            }
+        )
+    } else {
+        if (user.image) {
+            const filename = path.basename(user.image)
+            const old_path = path.join(__dirname, '..', 'profile_pictures', filename)
+            console.log('Deleting: ', old_path)
+            try {
+                fs.unlinkSync(old_path)
+            } catch (err) {
+                console.log('Could not delete old file:', err.message)
+            }
+        }
 
     user.image = `/profile_pictures/${req.file.filename}`
+    }
+
     await user.save()
     res.json({ image: user.image })
 })
