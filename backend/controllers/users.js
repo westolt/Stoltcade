@@ -46,14 +46,16 @@ router.post('/', async (req, res) => {
 
 router.put('/image', tokenExtractor, upload, async (req, res) => {
     const user = await User.findByPk(req.decodedToken.id)
-    const folderName = process.env.NODE_ENV === 'test' ? 'test' : 'profile_picture'
+    const folderName = process.env.NODE_ENV === 'test' ? 'test' : 'profile_pictures'
 
     if (!user) {
         return res.status(400).json({ error: 'User not found'})
     }
 
+    console.log('This is publicId: ', user.imagePublicId)
+
     if(user.imagePublicId) {
-        await cloudinary.uploader.destroy(`${folderName}/${user.imagePublicId}`)
+        await cloudinary.uploader.destroy(user.imagePublicId)
     }
 
     const result = await cloudinary.uploader.upload(`data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`, {

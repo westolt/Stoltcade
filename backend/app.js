@@ -15,7 +15,6 @@ app.use('/api/login', loginRouter)
 app.use('/api/games', gamesRouter)
 app.use('/api/scores', scoreRouter)
 
-app.use('/profile_pictures', express.static('profile_pictures'))
 app.use('/static-games', express.static('games'))
 
 app.use(express.static('dist'))
