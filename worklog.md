@@ -38,5 +38,5 @@
 |       | 4        | Fix token assignment on registration and correct old image deletion                                                           |
 | 15.12 | 2        | Add score router for gameId in backend and add top 10 scoreboard to games    |
 | 16.12 | 1        | Investigate how to upload profilepictures to cloud service. Add cloudinary.js util    |
-| 17.12 | 4        | Learn more how to use Cloudinary. Followed this [tutorial](https://cloudinary.com/blog/guest_post/upload-images-to-cloudinary-with-node-js-and-react) from Cloudinary's website on how to upload images to Cloudinary using multer memoryStorage. Refactor image deletion |
+| 17.12 | 4        | Learn more how to use Cloudinary. Followed this [tutorial](https://cloudinary.com/blog/guest_post/upload-images-to-cloudinary-with-node-js-and-react) from Cloudinary's website on how to upload images to Cloudinary using multer memoryStorage. Refactor image deletion. Remove static profile_pictures folder from backend and create profile_pictures and test folders in Cloudinary |
 | total | 84       |                                                                                                                               |
