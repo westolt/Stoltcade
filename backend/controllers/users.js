@@ -1,29 +1,10 @@
 const bcrypt = require('bcrypt')
 const router = require('express').Router()
-const multer = require('multer')
-const path = require('path')
 const jwt = require('jsonwebtoken')
 const { SECRET } = require('../util/config')
 const cloudinary = require('../util/cloudinary')
-const { tokenExtractor } = require('../util/middleware')
+const { tokenExtractor, upload } = require('../util/middleware')
 const User = require('../models/user')
-
-const storage = multer.memoryStorage()
-
-const upload = multer({
-    storage: storage,
-    limits: { fileSize: '1000000'},
-    fileFilter: (req, file, cb) => {
-        const fileTypes = /jpeg|jpg|png/
-        const mimeType = fileTypes.test(file.mimetype)
-        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase())
-
-        if(mimeType && extname) {
-            return cb(null, true)
-        }
-        cb('Give proper files format to upload')
-    }
-}).single('image')
 
 router.get('/', async (req, res) => {
     const users = await User.findAll({

@@ -1,5 +1,7 @@
 const logger = require('./logger')
 const jwt = require('jsonwebtoken')
+const path = require('path')
+const multer = require('multer')
 const { SECRET } = require('../util/config')
 const { User } = require('../models')
 
@@ -37,6 +39,21 @@ const userExtractor = async (req, res, next) => {
   }
 }
 
+const upload = multer({
+    storage: multer.memoryStorage(),
+    limits: { fileSize: '1000000'},
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpeg|jpg|png/
+        const mimeType = fileTypes.test(file.mimetype)
+        const extname = fileTypes.test(path.extname(file.originalname).toLowerCase())
+
+        if(mimeType && extname) {
+            return cb(null, true)
+        }
+        cb('Give proper files format to upload')
+    }
+}).single('image')
+
 const errorHandler = (error, request, response, next) => {
   logger.error(error.message)
 
@@ -54,5 +71,6 @@ const errorHandler = (error, request, response, next) => {
 module.exports = {
   tokenExtractor,
   userExtractor,
+  upload,
   errorHandler
 }
