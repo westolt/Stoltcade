@@ -3,22 +3,15 @@ const router = require('express').Router()
 const multer = require('multer')
 const path = require('path')
 const jwt = require('jsonwebtoken')
-const { SECRET, USE_CLOUDINARY } = require('../util/config')
-const fs = require('fs')
+const { SECRET } = require('../util/config')
+const cloudinary = require('../util/cloudinary')
 const { tokenExtractor } = require('../util/middleware')
 const User = require('../models/user')
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'profile_pictures')
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname))
-    }
-})
+const storage = multer.memoryStorage()
 
 const upload = multer({
-    storage: USE_CLOUDINARY ? multer.memoryStorage() : storage,
+    storage: storage,
     limits: { fileSize: '1000000'},
     fileFilter: (req, file, cb) => {
         const fileTypes = /jpeg|jpg|png/
@@ -71,38 +64,22 @@ router.post('/', async (req, res) => {
 })
 
 router.put('/image', tokenExtractor, upload, async (req, res) => {
-    console.log('This is the image file: ', req.file)
     const user = await User.findByPk(req.decodedToken.id)
 
     if (!user) {
         return res.status(400).json({ error: 'User not found'})
     }
 
-    if (USE_CLOUDINARY) {
-        if(user.image) {
-            const publicId = user.image.split('/').pop().split('.')[0]
-            await cloudinary.uploader.destroy(`profile_pictures/${publicId}`)
-        }
-
-        const uploadResult = await cloudinary.upload(
-            `profile_pictures/${publicId}`,{
-                
-            }
-        )
-    } else {
-        if (user.image) {
-            const filename = path.basename(user.image)
-            const old_path = path.join(__dirname, '..', 'profile_pictures', filename)
-            console.log('Deleting: ', old_path)
-            try {
-                fs.unlinkSync(old_path)
-            } catch (err) {
-                console.log('Could not delete old file:', err.message)
-            }
-        }
-
-    user.image = `/profile_pictures/${req.file.filename}`
+    if(user.image) {
+        const publicId = user.image.split('/').pop().split('.')[0]
+        await cloudinary.uploader.destroy(`profile_pictures/${publicId}`)
     }
+
+    const result = await cloudinary.uploader.upload(`data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`, {
+        folder: 'profile_pictures'
+    })
+
+    user.image = result.secure_url
 
     await user.save()
     res.json({ image: user.image })
