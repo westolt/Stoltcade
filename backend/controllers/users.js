@@ -70,19 +70,19 @@ router.put('/image', tokenExtractor, upload, async (req, res) => {
         return res.status(400).json({ error: 'User not found'})
     }
 
-    if(user.image) {
-        const publicId = user.image.split('/').pop().split('.')[0]
-        await cloudinary.uploader.destroy(`profile_pictures/${publicId}`)
+    if(user.imagePublicId) {
+        await cloudinary.uploader.destroy(user.imagePublicId)
     }
 
     const result = await cloudinary.uploader.upload(`data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`, {
         folder: 'profile_pictures'
     })
 
+    user.imagePublicId = result.public_id
     user.image = result.secure_url
 
     await user.save()
-    res.json({ image: user.image })
+    res.json({ image: user.image, imagePublicId: user.imagePublicId })
 })
 
 module.exports = router
