@@ -22,6 +22,10 @@ User.init({
   image: {
     type: DataTypes.STRING,
     allowNull: true
+  },
+  imagePublicId: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
 }, {
   sequelize,
