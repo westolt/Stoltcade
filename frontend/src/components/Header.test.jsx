@@ -9,7 +9,8 @@ import { MemoryRouter } from 'react-router-dom'
             <Header />
         </MemoryRouter>
         )
+
         
-    const element = screen.findByText('Stoltcade')
-    expect(element).toBeDefined()
+    const element = screen.getByText('Statcade')
+    expect(element).toBeInTheDocument()
  })

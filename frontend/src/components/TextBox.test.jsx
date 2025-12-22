@@ -3,10 +3,10 @@ import TextBox from './TextBox'
 import { test, expect } from 'vitest'
 
 test('renders default text', () => {
-  const text =  'Welcome to Stoltcade!'
+  const text =  'Welcome to Statcade!'
 
   render(<TextBox message={text} />)
 
-  const element = screen.getByText('Welcome to Stoltcade!')
+  const element = screen.getByText('Welcome to Statcade!')
   expect(element).toBeDefined()
 })

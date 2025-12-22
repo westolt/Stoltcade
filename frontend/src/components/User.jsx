@@ -19,7 +19,7 @@ const User = () => {
             const user = JSON.parse(loggedUserJSON)
             setUser(user)
             userService.setToken(user.token)
-            console.log('TOKEN: ', user.token)
+            console.log('User: ', user)
         }
     }, [])
 

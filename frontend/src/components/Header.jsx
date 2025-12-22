@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Header = () => {
   return (
     <div className='header'>
-      <Link to='/'>Stoltcade</Link>
+      <Link to='/'>Statcade</Link>
     </div>
   )
 }

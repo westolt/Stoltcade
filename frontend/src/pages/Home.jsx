@@ -12,7 +12,7 @@ const Home = ({ games }) => {
         <div className='userbox'><User /></div>
         <div className='main-area'>
             <div className='list'><GameList games={games} hoverChange={setHoverId}/></div>
-            <div className='textbox'><TextBox message={hoveredGame ? hoveredGame.description : 'Welcome to Stoltcade!'}/></div>
+            <div className='textbox'><TextBox message={hoveredGame ? hoveredGame.description : 'Welcome to Statcade!'}/></div>
         </div>
     </div>
     )
