@@ -23,7 +23,7 @@ vi.mock('../services/users', () => ({
   }
 }))
 
-test('show login and register when not logged in', () => {
+test('shows login and register when not logged in', () => {
   window.localStorage.clear()
 
   render(<User />)
@@ -39,7 +39,7 @@ beforeEach(() => {
   )
 })
 
-test('show username when user is logged in', async () => {
+test('shows username when user is logged in', async () => {
   render(<User />)
 
   expect(await screen.findByText('testuser')).toBeInTheDocument()
