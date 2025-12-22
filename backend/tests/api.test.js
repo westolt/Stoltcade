@@ -8,6 +8,7 @@ const app = require('../app')
 const { sequelize } = require('../util/db')
 const { SECRET } = require('../util/config')
 const User = require('../models/user')
+const Game = require('../models/game')
 
 const api = supertest(app)
 
@@ -28,8 +29,33 @@ const initialUsers = [
     }
 ]
 
+const initialGames = [
+  {
+    name: 'PeriodicPairs',
+    description: 'A quiz game about the periodic table.',
+    url: '/static-games/PeriodicPairs/index.html',
+    thumbnail: '/static-games/PeriodicPairs/game1.png',
+    how_to_play: 'Type the full name of the chemical element that matches the symbol shown on the screen and click Submit.'
+  },
+  {
+    name: 'Test',
+    description: 'This is a test',
+    url: 'static-games/Test/index.html',
+    thumbnail: 'static-games/Test/photo.png',
+    how_to_play: 'This is only a test'
+  },
+  {
+    name: 'Typing game',
+    description: 'Type fast',
+    url: 'static-games/Typing_game/index.html',
+    thumbnail: 'static-games/Typing_game/photo.png',
+    how_to_play: 'Type the text on the screen'
+  },
+]
+
 beforeEach(async () => {
     await User.destroy({ where: {} })
+    await Game.destroy({ where: {} })
 
     for (const user of initialUsers) {
     const passwordHash = await bcrypt.hash(user.password, 10)
@@ -39,9 +65,14 @@ beforeEach(async () => {
       image: null,
       imagePublicId: null
     })
-  }
+    }
+
+    for (const game of initialGames) {
+    await Game.create(game)
+    }
 })
 
+// User tests
 
 test('users are returned as json', async () => {
     await api
@@ -107,6 +138,8 @@ test('uploading wrong file type gives proper error message', async () => {
   assert.strictEqual(res.body.error, 'Give proper files format to upload')
 })
 
+// Login tests
+
 test('user can login successfully', async () => {
     const user = { username: 'will', password: '123' }
 
@@ -131,6 +164,46 @@ test('wrong password gives proper error message', async () => {
         .expect(401)
 
     assert.strictEqual(res.body.error, 'Invalid username or password')
+})
+
+// Game tests
+
+test('games are returned as json', async () => {
+  await api
+    .get('/api/games')
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+})
+
+test('all games are returned', async () => {
+    const response = await api.get('/api/games')
+
+    const games = response.body
+    assert.strictEqual(games.length, initialGames.length)
+
+    games.forEach(game => {
+      assert.ok(game.name)
+      assert.ok(game.description)
+      assert.ok(game.url)
+      assert.ok(game.how_to_play)
+    })
+})
+
+test('a specific games is within the returned games', async () => {
+  const response = await api.get('/api/games')
+
+  const contents = response.body.map(e => e.name)
+  assert(contents.includes('Typing game'))
+})
+
+test('specific game can be retrieved by id', async () => {
+  const game = await Game.findOne({ where: { name: 'PeriodicPairs' } })
+  const response = await api.get(`/api/games/${game.id}`).expect(200)
+  assert.strictEqual(response.body.name, 'PeriodicPairs')
+})
+
+test('getting non-existing game returns 404', async () => {
+  await api.get('/api/games/9999').expect(404)
 })
 
 after(async () => {
