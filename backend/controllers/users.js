@@ -15,33 +15,37 @@ router.get('/', async (req, res) => {
     res.json(users)
 })
 
-router.post('/', async (req, res) => {
-    const { username, password } = req.body
+router.post('/', async (req, res, next) => {
+    try {
+        const { username, password } = req.body
 
-    if (!password || password.length < 3) {
-    return res.status(400).json({ error: 'Password too short' })
+        if (!password || password.length < 3) {
+            return res.status(400).json({ error: 'Password too short' })
+        }
+
+        const saltRounds = 10
+        const passwordHash = await bcrypt.hash(password, saltRounds)
+
+        const user = await User.create({
+            username,
+            passwordHash,
+        })
+
+        const userForToken = {
+            username: user.username,
+            id: user.id
+        }
+
+        const token = jwt.sign(userForToken, SECRET)
+
+        res.status(200).json({
+            token,
+            username: user.username,
+            image: user.image
+        })
+    } catch (error) {
+        next(error)
     }
-
-    const saltRounds = 10
-    const passwordHash = await bcrypt.hash(password, saltRounds)
-
-    const user = await User.create({
-        username,
-        passwordHash,
-    })
-
-    const userForToken = {
-        username: user.username,
-        id: user.id
-    }
-
-    const token = jwt.sign(userForToken, SECRET)
-
-    res.status(200).json({
-    token,
-    username: user.username,
-    image: user.image
-  })
 })
 
 router.put('/image', tokenExtractor, upload, async (req, res) => {

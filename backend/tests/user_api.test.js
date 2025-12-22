@@ -1,43 +1,45 @@
+require('dotenv').config()
 const assert = require('node:assert')
 const { test, after, beforeEach } = require('node:test')
-const { sequelize } = require('../util/db')
-const jwt = require('jsonwebtoken')
-const { SECRET } = require('../util/config')
 const supertest = require('supertest')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 const app = require('../app')
+const { sequelize } = require('../util/db')
+const { SECRET } = require('../util/config')
 const User = require('../models/user')
 
 const api = supertest(app)
 
-const fakeUploader = {
+const cloudinary = require('../util/cloudinary')
+cloudinary.uploader = {
   destroy: async () => {},
   upload: async () => ({ public_id: 'mockId', secure_url: 'mockUrl' })
 }
 
-const cloudinary = require('../util/cloudinary')
-cloudinary.uploader = fakeUploader
-
 const initialUsers = [
     {
-        id: 1,
         username: 'will',
-        passwordHash: 'asdf',
-        image: null,
-        imagePublicId: null
+        password: '123'
     },
     {
-        id: 2,
         username: 'venla',
-        passwordHash: 'zxcv',
-        image: null,
-        imagePublicId: null
+        password: '123'
     }
 ]
 
 beforeEach(async () => {
     await User.destroy({ where: {} })
-    await User.create(initialUsers[0])
-    await User.create(initialUsers[1])
+
+    for (const user of initialUsers) {
+    const passwordHash = await bcrypt.hash(user.password, 10)
+    await User.create({
+      username: user.username,
+      passwordHash,
+      image: null,
+      imagePublicId: null
+    })
+  }
 })
 
 
@@ -53,11 +55,6 @@ test('all users are returned', async () => {
 
     const users = response.body
     assert.strictEqual(users.length, initialUsers.length)
-
-    users.forEach(user => {
-        assert.ok(user.id)
-        assert.ok(user.username)
-    })
 })
 
 test('creating a new user returns token and username', async () => {

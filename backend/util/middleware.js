@@ -50,21 +50,27 @@ const upload = multer({
         if(mimeType && extname) {
             return cb(null, true)
         }
-        cb('Give proper files format to upload')
+        cb(new Error('Give proper files format to upload'))
     }
 }).single('image')
 
-const errorHandler = (error, request, response, next) => {
+const errorHandler = (error, req, res, next) => {
   logger.error(error.message)
 
+  if (error.message === 'Give proper files format to upload') {
+    return res.status(400).json({ error: error.message })
+  }
+
   if (error.name === 'SequelizeDatabaseError') {
-    return response.status(400).json({ error: 'malformatted id' })
-  } else if (error.name === 'SequelizeValidationError') {
-    return response.status(400).json({ error: error.errors[0].message })
-  } else if (error.name === 'SequelizeUniqueConstraintError') {
-    return response.status(400).json({ error: 'Username must be unique' })
-  } else if (error instanceof multer.MulterError || typeof error === 'string') {
-    return response.status(400).json({ error })
+    return res.status(400).json({ error: 'malformatted id' })
+  }
+
+  if (error.name === 'SequelizeValidationError') {
+    return res.status(400).json({ error: error.errors[0].message })
+  }
+
+  if (error.name === 'SequelizeUniqueConstraintError') {
+    return res.status(400).json({ error: 'Username must be unique' })
   }
 
   next(error)

@@ -9,6 +9,7 @@ on:
 env:
   NODE_ENV: test
   TEST_DATABASE_URL: ${{ secrets.TEST_DATABASE_URL }}
+  TEST_SECRET: ${{ secrets.TEST_SECRET }}
 
 jobs:
   frontend:
