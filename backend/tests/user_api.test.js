@@ -107,6 +107,32 @@ test('uploading wrong file type gives proper error message', async () => {
   assert.strictEqual(res.body.error, 'Give proper files format to upload')
 })
 
+test('user can login successfully', async () => {
+    const user = { username: 'will', password: '123' }
+
+    const res = await api
+        .post('/api/login')
+        .send(user)
+        .expect(200)
+        .expect('Content-Type', /application\/json/)
+
+    const decoded = jwt.verify(res.body.token, SECRET)
+
+    assert.strictEqual(decoded.username, user.username)
+    assert.strictEqual(res.body.username, user.username)
+})
+
+test('wrong password gives proper error message', async () => {
+    const user = { username: 'will', password: 'wrongpassword' }
+
+    const res = await api
+        .post('/api/login')
+        .send(user)
+        .expect(401)
+
+    assert.strictEqual(res.body.error, 'Invalid username or password')
+})
+
 after(async () => {
   await sequelize.close()
 })
