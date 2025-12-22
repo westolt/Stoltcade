@@ -1,5 +1,6 @@
 const express = require('express')
 const middleware = require('./util/middleware')
+const path = require('path')
 
 const gamesRouter = require('./controllers/games')
 const userRouter = require('./controllers/users')
@@ -16,8 +17,11 @@ app.use('/api/games', gamesRouter)
 app.use('/api/scores', scoreRouter)
 
 app.use('/static-games', express.static('games'))
-
 app.use(express.static('dist'))
+
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
 
 app.use(middleware.errorHandler)
 
