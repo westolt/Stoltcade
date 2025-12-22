@@ -63,6 +63,8 @@ const errorHandler = (error, request, response, next) => {
     return response.status(400).json({ error: error.errors[0].message })
   } else if (error.name === 'SequelizeUniqueConstraintError') {
     return response.status(400).json({ error: 'Username must be unique' })
+  } else if (error instanceof multer.MulterError || typeof error === 'string') {
+    return response.status(400).json({ error })
   }
 
   next(error)

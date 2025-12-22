@@ -48,7 +48,15 @@ test('games are returned as json', async () => {
 test('all games are returned', async () => {
     const response = await api.get('/api/games')
 
-    assert.strictEqual(response.body.length, initialGames.length)
+    const games = response.body
+    assert.strictEqual(games.length, initialGames.length)
+
+    games.forEach(game => {
+      assert.ok(game.name)
+      assert.ok(game.description)
+      assert.ok(game.url)
+      assert.ok(game.how_to_play)
+    })
 })
 
 test('a specific games is within the returned games', async () => {
@@ -56,6 +64,16 @@ test('a specific games is within the returned games', async () => {
 
   const contents = response.body.map(e => e.name)
   assert(contents.includes('Typing game'))
+})
+
+test('specific game can be retrieved by id', async () => {
+  const game = await Game.findOne({ where: { name: 'PeriodicPairs' } })
+  const response = await api.get(`/api/games/${game.id}`).expect(200)
+  assert.strictEqual(response.body.name, 'PeriodicPairs')
+})
+
+test('getting non-existing game returns 404', async () => {
+  await api.get('/api/games/9999').expect(404)
 })
 
 after(async () => {
