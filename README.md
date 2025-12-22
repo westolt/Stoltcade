@@ -1,5 +1,5 @@
 [![CI](https://github.com/westolt/Stoltcade/actions/workflows/main.yml/badge.svg)](https://github.com/westolt/Stoltcade/actions/workflows/main.yml)
-[![codecov](https://codecov.io/gh/westolt/Stoltcade/graph/badge.svg?token=OB052PUUOX)](https://codecov.io/gh/westolt/Stoltcade)
+[![codecov](https://codecov.io/gh/westolt/Statcade/graph/badge.svg?token=OB052PUUOX)](https://codecov.io/gh/westolt/Statcade)
 
 # 🎮 Statcade
 
