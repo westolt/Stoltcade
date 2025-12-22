@@ -7,10 +7,11 @@ const jwt = require('jsonwebtoken')
 const app = require('../app')
 const { sequelize } = require('../util/db')
 const { SECRET } = require('../util/config')
-const User = require('../models/user')
-const Game = require('../models/game')
+const { User, Game, Score } = require('../models')
 
 const api = supertest(app)
+
+// Setup
 
 const cloudinary = require('../util/cloudinary')
 cloudinary.uploader = {
@@ -19,14 +20,14 @@ cloudinary.uploader = {
 }
 
 const initialUsers = [
-    {
-        username: 'will',
-        password: '123'
-    },
-    {
-        username: 'venla',
-        password: '123'
-    }
+  {
+      username: 'will',
+      password: '123'
+  },
+  {
+      username: 'venla',
+      password: '123'
+  }
 ]
 
 const initialGames = [
@@ -54,38 +55,39 @@ const initialGames = [
 ]
 
 beforeEach(async () => {
-    await User.destroy({ where: {} })
-    await Game.destroy({ where: {} })
+  await Score.destroy({ where: {} })
+  await User.destroy({ where: {} })
+  await Game.destroy({ where: {} })
 
-    for (const user of initialUsers) {
-    const passwordHash = await bcrypt.hash(user.password, 10)
-    await User.create({
-      username: user.username,
-      passwordHash,
-      image: null,
-      imagePublicId: null
-    })
-    }
+  for (const user of initialUsers) {
+  const passwordHash = await bcrypt.hash(user.password, 10)
+  await User.create({
+    username: user.username,
+    passwordHash,
+    image: null,
+    imagePublicId: null
+  })
+  }
 
-    for (const game of initialGames) {
-    await Game.create(game)
-    }
+  for (const game of initialGames) {
+  await Game.create(game)
+  }
 })
 
 // User tests
 
 test('users are returned as json', async () => {
-    await api
-        .get('/api/users')
-        .expect(200)
-        .expect('Content-Type', /application\/json/)
+  await api
+      .get('/api/users')
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
 })
 
 test('all users are returned', async () => {
-    const response = await api.get('/api/users')
+  const response = await api.get('/api/users')
 
-    const users = response.body
-    assert.strictEqual(users.length, initialUsers.length)
+  const users = response.body
+  assert.strictEqual(users.length, initialUsers.length)
 })
 
 test('creating a new user returns token and username', async () => {
@@ -141,29 +143,29 @@ test('uploading wrong file type gives proper error message', async () => {
 // Login tests
 
 test('user can login successfully', async () => {
-    const user = { username: 'will', password: '123' }
+  const user = { username: 'will', password: '123' }
 
-    const res = await api
-        .post('/api/login')
-        .send(user)
-        .expect(200)
-        .expect('Content-Type', /application\/json/)
+  const res = await api
+      .post('/api/login')
+      .send(user)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
 
-    const decoded = jwt.verify(res.body.token, SECRET)
+  const decoded = jwt.verify(res.body.token, SECRET)
 
-    assert.strictEqual(decoded.username, user.username)
-    assert.strictEqual(res.body.username, user.username)
+  assert.strictEqual(decoded.username, user.username)
+  assert.strictEqual(res.body.username, user.username)
 })
 
 test('wrong password gives proper error message', async () => {
-    const user = { username: 'will', password: 'wrongpassword' }
+  const user = { username: 'will', password: 'wrongpassword' }
 
-    const res = await api
-        .post('/api/login')
-        .send(user)
-        .expect(401)
+  const res = await api
+      .post('/api/login')
+      .send(user)
+      .expect(401)
 
-    assert.strictEqual(res.body.error, 'Invalid username or password')
+  assert.strictEqual(res.body.error, 'Invalid username or password')
 })
 
 // Game tests
@@ -176,17 +178,17 @@ test('games are returned as json', async () => {
 })
 
 test('all games are returned', async () => {
-    const response = await api.get('/api/games')
+  const response = await api.get('/api/games')
 
-    const games = response.body
-    assert.strictEqual(games.length, initialGames.length)
+  const games = response.body
+  assert.strictEqual(games.length, initialGames.length)
 
-    games.forEach(game => {
-      assert.ok(game.name)
-      assert.ok(game.description)
-      assert.ok(game.url)
-      assert.ok(game.how_to_play)
-    })
+  games.forEach(game => {
+    assert.ok(game.name)
+    assert.ok(game.description)
+    assert.ok(game.url)
+    assert.ok(game.how_to_play)
+  })
 })
 
 test('a specific games is within the returned games', async () => {
@@ -205,6 +207,101 @@ test('specific game can be retrieved by id', async () => {
 test('getting non-existing game returns 404', async () => {
   await api.get('/api/games/9999').expect(404)
 })
+
+// Score tests
+
+test('scores are returned as JSON', async () => {
+  const res = await api
+    .get('/api/scores')
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+})
+
+test('posting a new score works', async () => {
+  const user = await User.findOne({ where: { username: 'will' }})
+  const game = await Game.findOne({ where: { name: 'PeriodicPairs' }})
+  const token = jwt.sign({ id: user.id, username: user.username, }, SECRET)
+
+  const newScore = { score: 50, gameId: game.id }
+
+  const res = await api
+    .post('/api/scores')
+    .set('Authorization', `Bearer ${token}`)
+    .send(newScore)
+    .expect(200)
+
+  assert.strictEqual(res.body.score, newScore.score)
+  assert.strictEqual(res.body.user_id, user.id)
+  assert.strictEqual(res.body.game_id, game.id)
+})
+
+test('score is updated only if new score is higher', async () => {
+  const user = await User.findOne({ where: { username: 'will' }})
+  const game = await Game.findOne({ where: { name: 'PeriodicPairs' }})
+  const token = jwt.sign({ id: user.id, username: user.username, }, SECRET)
+
+  await Score.create({ score: 50, user_id: user.id, game_id: game.id })
+
+  const res = await api
+    .post('/api/scores')
+    .set('Authorization', `Bearer ${token}`)
+    .send({ score: 30, gameId: game.id })
+    .expect(200)
+
+  assert.strictEqual(res.body.score, 50)
+
+  const resNew = await api
+    .post('/api/scores')
+    .set('Authorization', `Bearer ${token}`)
+    .send({ score: 100, gameId: game.id })
+    .expect(200)
+
+  assert.strictEqual(resNew.body.score, 100)
+})
+
+test('score is not saved if toke is invalid', async () => {
+  const game = await Game.findOne({ where: { name: 'PeriodicPairs' }})
+  const token = 'invalidToken'
+
+  const newScore = { score: 50, gameId: game.id }
+
+  const res = await api
+    .post('/api/scores')
+    .set('Authorization', `Bearer ${token}`)
+    .send(newScore)
+    .expect(401)
+
+  assert.strictEqual(res.body.error, 'token invalid')
+})
+
+test('get game top 10 scoreboard by game id', async () => {
+  const user1 = await User.findOne({ where: { username: 'will' }})
+  const user2 = await User.findOne({ where: { username: 'venla' }})
+  const game = await Game.findOne({ where: { name: 'PeriodicPairs' }})
+
+  await Score.create({ score: 50, user_id: user1.id, game_id: game.id })
+  await Score.create({ score: 100, user_id: user2.id, game_id: game.id })
+
+  const res = await api
+    .get(`/api/scores/game/${game.id}`)
+    .expect(200)
+    .expect('Content-Type', /application\/json/)
+
+  const score1 = res.body[0]
+  const score2 = res.body[1]
+
+  assert.equal(score1.score, 100)
+  assert.equal(score2.score, 50)
+})
+
+test('top 10 scoreboard is not shown if invalid game id', async () => {
+  const game = await Game.findOne({ where: { name: 'PeriodicPairs' }})
+
+  await api
+    .get(`/api/scores/game/${game.id + 10000}`)
+    .expect(404)
+})
+
 
 after(async () => {
   await sequelize.close()

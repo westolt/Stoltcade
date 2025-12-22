@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/game/:gameId', async (req, res) => {
-    const score = await Score.findAll({
+    const scores = await Score.findAll({
         where: {
             game_id: req.params.gameId
         },
@@ -33,20 +33,16 @@ router.get('/game/:gameId', async (req, res) => {
         }
         ]
     })
-    if (score) {
-        res.json(score)
-    } else {
-        res.status(404).end()
+
+    if (scores.length === 0) {
+        return res.status(404).end()
     }
+
+    res.json(scores)
 })
 
 router.post('/', tokenExtractor, async (req, res) => {
     const decoded = req.decodedToken
-
-    if (!decoded) {
-        return res.status(401).json({ error: 'token missing or invalid' })
-    }
-
     const user_id = decoded.id
 
     const { score, gameId } = req.body
