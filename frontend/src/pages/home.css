@@ -1,0 +1,36 @@
+.container {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: row;
+}
+
+.userbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-area {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list {
+    display: flex;
+    padding-top: 100px;
+    padding-bottom: 120px;
+}
+
+.textbox {
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

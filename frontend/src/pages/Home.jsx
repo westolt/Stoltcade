@@ -2,6 +2,8 @@ import { useState } from 'react'
 import User from '../components/User'
 import GameList from '../components/GameList'
 import TextBox from '../components/TextBox'
+import Stats from '../components/Stats'
+import './home.css'
 
 const Home = ({ games }) => {
     const [ hoverId, setHoverId] = useState(null)
@@ -14,6 +16,7 @@ const Home = ({ games }) => {
             <div className='list'><GameList games={games} hoverChange={setHoverId}/></div>
             <div className='textbox'><TextBox message={hoveredGame ? hoveredGame.description : 'Welcome to Statcade!'}/></div>
         </div>
+        <Stats />
     </div>
     )
 }
