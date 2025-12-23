@@ -4,14 +4,13 @@
     border-radius: 20px;
     border: 8px solid rgb(83, 46, 11);
     background-color: rgb(66, 31, 7);
-    width: 450px;
+    width: 500px;
     height: auto;
     max-height: 520px;
     height: auto;
     padding: 10px;
     box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 h2 {
@@ -40,16 +39,23 @@ input {
 }
 
 .stats_table {
-  width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    min-height: 0;
 }
 
 .scores {
     font-family: Garamond;
     color: white;
     background-color: rgb(24, 23, 23);
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;  
 }
 
 .score_row {
@@ -66,11 +72,13 @@ input {
 .score_cell {
   flex: 1;
   text-align: left;
+  padding: 2px;
   box-sizing: border-box;
-  min-width: 0;
+  word-wrap: break-word;
+  overflow: hidden;
 }
 
-.score_cell:nth-child(1) { flex: 1; }
-.score_cell:nth-child(2) { flex: 1; }
-.score_cell:nth-child(3) { flex: 1; text-align: center; }
+.score_cell:nth-child(1) { flex: 1; border-right: 1px solid #ccc; }
+.score_cell:nth-child(2) { flex: 1; border-right: 1px solid #ccc; }
+.score_cell:nth-child(3) { flex: 1; text-align: center; border-right: 1px solid #ccc; }
 .score_cell:nth-child(4) { flex: 1; text-align: left; }
