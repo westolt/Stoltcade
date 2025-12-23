@@ -1,0 +1,19 @@
+.statsbox {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1cm;
+    border-radius: 20px;
+    background-color: rgb(66, 31, 7);
+    width: 400px;
+    height: 600px;
+}
+
+h2 {
+    font-family: Garamond;
+    color: white;
+}
+
+.scores {
+    font-family: Garamond;
+    color: white;
+}

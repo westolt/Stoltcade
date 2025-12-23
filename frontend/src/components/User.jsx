@@ -19,7 +19,6 @@ const User = () => {
             const user = JSON.parse(loggedUserJSON)
             setUser(user)
             userService.setToken(user.token)
-            console.log('User: ', user)
         }
     }, [])
 
@@ -103,7 +102,7 @@ const User = () => {
                         marginBottom: '10px'
                         }}
                     key={score.id}>
-                        {score.game.name}: {score.score} 
+                        {score.game.name}: {score.score}
                     </li>
                     )}
                 </ul>
