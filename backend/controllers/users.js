@@ -50,7 +50,11 @@ router.post('/', async (req, res, next) => {
 
 router.put('/image', tokenExtractor, upload, async (req, res) => {
     const user = await User.findByPk(req.decodedToken.id)
-    const folderName = process.env.NODE_ENV === 'test' ? 'test' : 'profile_pictures'
+    const folderName = process.env.NODE_ENV === 'test'
+        ? 'test'
+        : process.env.NODE_ENV === 'development'
+            ? 'dev'
+            : 'profile_pictures'
 
     if (!user) {
         return res.status(400).json({ error: 'User not found'})
