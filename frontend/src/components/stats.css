@@ -1,11 +1,17 @@
 .statsbox {
     display: flex;
     flex-direction: column;
-    padding-left: 5px;
     border-radius: 20px;
+    border: 8px solid rgb(83, 46, 11);
     background-color: rgb(66, 31, 7);
-    width: 400px;
-    height: 600px;
+    width: 450px;
+    height: auto;
+    max-height: 520px;
+    height: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 h2 {
@@ -15,10 +21,11 @@ h2 {
     color: white;
 }
 
-.scores {
-    font-family: Garamond;
-    color: white;
-    background-color: rgb(24, 23, 23);
+.filters {
+    display: flex;
+    flex-direction: row;
+    padding-left: 5px;
+    padding-bottom: 5px;
 }
 
 select {
@@ -32,7 +39,38 @@ input {
     width: 120px;
 }
 
-.filters {
-    display: flex;
-    flex-direction: row;
+.stats_table {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
 }
+
+.scores {
+    font-family: Garamond;
+    color: white;
+    background-color: rgb(24, 23, 23);
+}
+
+.score_row {
+    display: flex;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    color: white;
+    border-bottom: 1px solid #ccc;
+    box-sizing: border-box;
+    flex-wrap: nowrap;
+    width: 100%;  
+}
+
+.score_cell {
+  flex: 1;
+  text-align: left;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.score_cell:nth-child(1) { flex: 1; }
+.score_cell:nth-child(2) { flex: 1; }
+.score_cell:nth-child(3) { flex: 1; text-align: center; }
+.score_cell:nth-child(4) { flex: 1; text-align: left; }
