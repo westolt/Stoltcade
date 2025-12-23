@@ -259,7 +259,7 @@ test('score is updated only if new score is higher', async () => {
   assert.strictEqual(resNew.body.score, 100)
 })
 
-test('score is not saved if toke is invalid', async () => {
+test('score is not saved if token is invalid', async () => {
   const game = await Game.findOne({ where: { name: 'PeriodicPairs' }})
   const token = 'invalidToken'
 

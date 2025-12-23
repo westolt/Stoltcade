@@ -40,4 +40,5 @@
 | 20.12 | 1        | Investigate how to upload profilepictures to cloud service. Add cloudinary.js util    |
 | 21.12 | 4        | Learn more how to use Cloudinary. Followed this [tutorial](https://cloudinary.com/blog/guest_post/upload-images-to-cloudinary-with-node-js-and-react) from Cloudinary's website on how to upload images to Cloudinary using multer memoryStorage. Refactor image deletion. Remove static profile_pictures folder from backend and create profile_pictures and test folders in Cloudinary |
 | 22.12 | 9        | Add unit tests to frontend and backend   |
+| 23.12 | 9        | Add unit tests to frontend and backend (https://stackoverflow.com/questions/77901322/javascript-current-time-not-getting-updated-in-react-js)  |
 | total | 93       |                                                                                                                               |
