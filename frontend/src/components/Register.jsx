@@ -54,9 +54,8 @@ const Register = ({ setUser }) => {
             <form onSubmit={handleRegister}>
                 <div>
                 <label style={{
-                fontSize: '12px',
                 color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
+                fontFamily: 'Garamond'
                 }}>
                     Give username
                     <input
@@ -68,9 +67,8 @@ const Register = ({ setUser }) => {
                 </div>
                 <div>
                 <label style={{
-                fontSize: '12px',
                 color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
+                fontFamily: 'Garamond'
                 }}>
                     Give password
                     <input
@@ -82,9 +80,8 @@ const Register = ({ setUser }) => {
                 </div>
                 <div>
                 <label style={{
-                fontSize: '12px',
                 color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
+                fontFamily: 'Garamond'
                 }}>
                     Give password again
                     <input

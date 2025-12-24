@@ -37,9 +37,8 @@ const LoginFrom = ({ setUser }) => {
             <form onSubmit={handleLogin}>
                 <div>
                 <label style={{
-                fontSize: '12px',
                 color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
+                fontFamily: 'Garamond'
                 }}>
                     Username
                     <input
@@ -51,9 +50,8 @@ const LoginFrom = ({ setUser }) => {
                 </div>
                 <div>
                 <label style={{
-                fontSize: '12px',
                 color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
+                fontFamily: 'Garamond'
                 }}>
                     Password
                     <input

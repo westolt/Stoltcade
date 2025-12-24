@@ -20,7 +20,7 @@ const UserStatistics = ({ userScores }) => {
                 )}
             </div>
         ) : (
-            <p>Play games to save your scores!</p>
+            <div className="other_stats">Play games to save your scores!</div>
         )
         }
         </div>
