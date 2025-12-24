@@ -62,9 +62,10 @@ const User = () => {
 
     return (
     <div className="user_box">
-        <>
-        {user ? ( 
-        <>
+        {user ? (
+            <>
+            <p className='name'>{user.username}</p>
+            <>
             <ImageButton
                 image={user?.image || guest}
                 onClick={handleClick}
@@ -74,50 +75,26 @@ const User = () => {
                 accept="image/*"
                 onChange={(e) => setProfilePictureFile(e.target.files[0])}
             />
-        </>
-        ):( 
-        <img className="picture" src={guest} alt="Profile picture" />
-        )}
-        </>
-        {user ? (
-            <>
-            <p style={{
-                color: 'white',
-                fontFamily: '"Press Start 2P", cursive',
-                margin: 0,
-            }}>{user.username}</p>
-            <p style={{
-                color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
-            }}>High scores:</p>
+            </>
 
             {userScores.length > 0 ? (
                 <ul>
                     {userScores.map(score =>
-                    <li style={{
-                        color: 'white',
-                        fontSize: '10px',
-                        fontFamily: '"Press Start 2P", cursive',
-                        marginLeft: '-30px',
-                        marginBottom: '10px'
-                        }}
-                    key={score.id}>
+                    <li key={score.id}>
                         {score.game.name}: {score.score}
                     </li>
                     )}
                 </ul>
             ) : (
-                <p style={{
-                fontSize: '12px',
-                color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
-            }}>Play games to save your scores!</p>
+                <p>Play games to save your scores!</p>
             )
             }
             <button onClick={handleLogout}>Logout</button>
             </>
         ) : (
             <>
+            <p className='name'>Guest</p>
+            <img className="picture" src={guest} alt="Profile picture" />
             <LoginFrom setUser={setUser}/>
             <Register setUser={setUser}/>
             </>

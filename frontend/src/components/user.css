@@ -10,12 +10,11 @@
 }
 
 .name {
-    font-family: 'Press Start 2P';
-    font-size: small;
+    font-family: garamond;
+    font-size: 30px;
     color: rgb(226, 215, 215);
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    text-align: center;
+    margin: 0;
 }
 
 .stat_row {
@@ -26,14 +25,8 @@
     margin: 10px 0;
 }
 
-.style {
-    font-family: 'Press Start 2P';
-    font-size: 10px;
-    color: rgb(226, 215, 215);
-}
-
 .stat {
-    font-family: 'Press Start 2P';
+    font-family: 'Garamond';
     font-size: 10px;
     color: rgb(226, 215, 215);
 }

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import User from '../components/User'
 import GameList from '../components/GameList'
 import TextBox from '../components/TextBox'
-import Stats from '../components/Stats'
+import Statistics from '../components/Statistics'
 import './home.css'
 
 const Home = ({ games }) => {
@@ -12,11 +12,11 @@ const Home = ({ games }) => {
     return (
     <div className='container'>
         <div className='userbox'><User /></div>
-        <div className='main-area'>
+        <div className='middle-area'>
             <div className='list'><GameList games={games} hoverChange={setHoverId}/></div>
             <div className='textbox'><TextBox message={hoveredGame ? hoveredGame.description : 'Welcome to Statcade!'}/></div>
         </div>
-        <Stats />
+        <Statistics />
     </div>
     )
 }

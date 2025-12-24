@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import scoreService from '../services/scores'
 import ShowFilter from './ShowFilter'
 import NameFilter from './NameFilter'
-import StatsList from './StatsList'
+import ScoreList from './ScoreList'
 import './stats.css'
 
 const Stats = () => {
@@ -44,7 +44,7 @@ const Stats = () => {
                 <ShowFilter sortBy={sortBy} setSortBy={setSortBy}/>
                 <NameFilter filteredName={filteredName} setFilteredName={setFilteredName}/>
             </div>
-            <StatsList scores={filteredScores}/>
+            <ScoreList scores={filteredScores}/>
         </div>
     )
 }

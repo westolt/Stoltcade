@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const StatsList = ({ scores }) => {
+const ScoreList = ({ scores }) => {
     const [currentTime, setCurrentTime] =  useState(new Date())
 
     useEffect(() => {
@@ -26,12 +26,12 @@ const StatsList = ({ scores }) => {
             return `${result} ${unit} ago`
         } 
         const result = Math.floor(diffSec / 86400)
-        const unit = result === 1 ? 'day' : 'dayss'
+        const unit = result === 1 ? 'day' : 'days'
         return `${result} ${unit} ago`
     }
 
     return(
-        <div className='stats_table'>
+        <div className='score_table'>
             <div className='score_row'>
                 <div className='score_cell'>User</div>
                 <div className='score_cell'>Game</div>
@@ -56,4 +56,4 @@ const StatsList = ({ scores }) => {
     )
 }
 
-export default StatsList
+export default ScoreList

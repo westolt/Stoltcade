@@ -10,11 +10,7 @@ const ImageButton = ({ image, onClick }) => {
             alt="Profile picture"
             />
             <span className="overlay">
-                <p style={{
-                fontSize: '12px',
-                color: 'white',
-                fontFamily: '"Press Start 2P", cursive'
-            }}>Click to change profile picture!</p>
+                <p>Click to change profile picture!</p>
             </span>
         </button>
     )
