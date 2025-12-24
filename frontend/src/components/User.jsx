@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import userService from '../services/users'
 import scoreService from '../services/scores'
+import UserStatistics from './UserStatistics'
 import LoginFrom from './LoginForm'
 import Register from './Register'
 import guest from '../assets/guest.png'
@@ -65,7 +66,7 @@ const User = () => {
         {user ? (
             <>
             <p className='name'>{user.username}</p>
-            <>
+            <button onClick={handleLogout}>Logout</button>
             <ImageButton
                 image={user?.image || guest}
                 onClick={handleClick}
@@ -75,21 +76,7 @@ const User = () => {
                 accept="image/*"
                 onChange={(e) => setProfilePictureFile(e.target.files[0])}
             />
-            </>
-
-            {userScores.length > 0 ? (
-                <ul>
-                    {userScores.map(score =>
-                    <li key={score.id}>
-                        {score.game.name}: {score.score}
-                    </li>
-                    )}
-                </ul>
-            ) : (
-                <p>Play games to save your scores!</p>
-            )
-            }
-            <button onClick={handleLogout}>Logout</button>
+            <UserStatistics userScores={userScores}/>
             </>
         ) : (
             <>

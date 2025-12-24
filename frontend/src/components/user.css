@@ -17,20 +17,6 @@
     margin: 0;
 }
 
-.stat_row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 150px;
-    margin: 10px 0;
-}
-
-.stat {
-    font-family: 'Garamond';
-    font-size: 10px;
-    color: rgb(226, 215, 215);
-}
-
 .image-button {
     position: relative;
     padding: 0;
@@ -58,4 +44,59 @@
 
 .image-button:hover .overlay {
     opacity: 1;
+}
+
+.user_stats_table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    min-height: 0;
+}
+
+.game_stats{
+    display: flex;
+    flex-direction: column;
+}
+
+.game_name {
+    font-family: 'Garamond';
+    color: rgb(226, 215, 215);
+    padding-left: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+.user_score_row {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Garamond';
+    color: rgb(226, 215, 215);
+    background-color: rgb(24, 23, 23);
+    width: 100%;  
+}
+
+.score_label {
+    width: 50%;
+    padding-left: 5px;
+    border-right: 1px solid #ccc;
+}
+
+.user_score {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.other_stats {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Garamond';
+    color: rgb(226, 215, 215);
+    background-color: rgb(24, 23, 23);
+    width: 100%;
+    border-top: 1px solid #ccc;
 }
