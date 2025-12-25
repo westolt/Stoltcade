@@ -44,4 +44,5 @@
 |       | 2        | Add Stats.jsx that shows statistics. Used this [answer](https://stackoverflow.com/questions/77901322/javascript-current-time-not-getting-updated-in-react-js) from Stack overflow to set properly time for high scores |
 |       | 3        | Refactor Stats.jsx and design how to display statistics  |
 |       | 2        | Work with css  |
-| total | 102       |                                                                                                                               |
+| 24.12 | 4        | Refactor and redesign User.jsx, improve top 10 scoreboard appearance, update font-family globally except in TextBox. |
+| total | 106       |                                                                                                                               |
