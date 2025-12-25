@@ -47,7 +47,7 @@ router.post('/', tokenExtractor, async (req, res) => {
 
     const { score, gameId } = req.body
 
-    if (!score || !gameId){
+    if (score === undefined || gameId === undefined){
         return res.status(400).json({ error: 'Missing score or gameId' })
     }
 

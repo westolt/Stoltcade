@@ -48,7 +48,8 @@ test('shows username when user is logged in', async () => {
 test('shows user scores', async () => {
   render(<User />)
 
-  expect(await screen.findByText(/PeriodicPairs: 10/)).toBeInTheDocument()
+  expect(await screen.findByText('PeriodicPairs')).toBeInTheDocument()
+  expect(await screen.findByText('10')).toBeInTheDocument()
 })
 
 test('logout clears user data', async () => {
