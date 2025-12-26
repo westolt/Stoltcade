@@ -45,8 +45,13 @@
 |       | 3        | Refactor Stats.jsx and design how to display statistics  |
 |       | 2        | Work with css  |
 | 24.12 | 4        | Refactor and redesign User.jsx, improve top 10 scoreboard appearance, update font-family globally except in TextBox. |
-| 25.12 | 2        | Design a new typing game integrated into Statcade. Plan game mechanics and reward system. Statecade home page consists of two sections: games and rewards. User unlocks a special font by reaching a WPM goal. Investigate possible technologies and libraries. Start experimenting with JavaScript canvas |
+| 25.12 | 2        | Design a new typing game integrated into Statcade. Repository: [TypingGame](https://github.com/westolt/TypingGame.git). Plan game mechanics and reward system. Statecade home page consists of two sections: games and rewards. User unlocks a special font by reaching a WPM goal. Investigate possible technologies and libraries. Start experimenting with JavaScript canvas |
 |       | 2        | Experiment with JavaScript canvas. Discover that the <canvas> element does not support text wrapping well. Decide to switch to Phaser |
 |       | 1        | Try working with Phaser. Realize that it requires too much learning and external help. Decide to implement the game with React instead  |
 |       | 3        | Implement core game logic. Game randomly selects a paragraph from a JSON file. User can start typing and the timer starts counting down |
-| total | 114      |                                                                                                                               |
+| 26.12 | 2        | Display paragraph and user input with colored feedback in Typer.jsx |
+|       | 2        | Prevent player from typing past a wrong character |
+|       | 2        | Prevent erasing correct words and clear input after a word is correctly typed |
+|       | 1        | Add visible feedback for typos on empty space |
+|       | 2        | Refactor Input component and add handleTyping function. Add WPM calculation when paragraph is completed |
+| total | 123      |                                                                                                                               |
