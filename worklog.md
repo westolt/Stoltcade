@@ -49,9 +49,12 @@
 |       | 2        | Experiment with JavaScript canvas. Discover that the <canvas> element does not support text wrapping well. Decide to switch to Phaser |
 |       | 1        | Try working with Phaser. Realize that it requires too much learning and external help. Decide to implement the game with React instead  |
 |       | 3        | Implement core game logic. Game randomly selects a paragraph from a JSON file. User can start typing and the timer starts counting down |
-| 26.12 | 2        | Display paragraph and user input with colored feedback in Typer.jsx |
+| 26.12 | 2        | Display paragraph and user input with colored feedback in Typer.jsx in [TypingGame](https://github.com/westolt/TypingGame.git) |
 |       | 2        | Prevent player from typing past a wrong character |
 |       | 2        | Prevent erasing correct words and clear input after a word is correctly typed |
 |       | 1        | Add visible feedback for typos on empty space |
 |       | 2        | Refactor Input component and add handleTyping function. Add WPM calculation when paragraph is completed |
-| total | 123      |                                                                                                                               |
+| 27.12 | 2        | Add restart, random, and choose text buttons. Implement selection of specific paragraphs and reset functionality for current game in [TypingGame](https://github.com/westolt/TypingGame.git)|
+|       | 2        | Display current WPM in real time while typing. Fix calculation formula and ensure WPM resets correctly when starting a new game |
+|       | 2        | Add ability to save user score to backend via scoreService. Fix handleTyping logic to be compatible with async score submission. |
+| total | 129      |                                                                                                                               |
