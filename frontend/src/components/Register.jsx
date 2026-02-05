@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import userService from '../services/users'
+import equippedRewardsService from '../services/equipped_rewards'
 
 const Register = ({ setUser, showMessage }) => {
     const [username, setUsername] = useState('') 
@@ -36,6 +37,7 @@ const Register = ({ setUser, showMessage }) => {
                 )
 
                 userService.setToken(newUser.token)
+                equippedRewardsService.setToken(newUser.token)
 
                 const fullUser = await userService.getOne(newUser.id)
 
