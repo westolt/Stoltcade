@@ -43,13 +43,13 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        position: relative;
     }
 
     .middle-area {
         display: flex;
         flex-direction: column;
         width: 100%;
+        height: auto;
         align-items: center;
         gap: 4rem;
         margin-top: 2rem;
